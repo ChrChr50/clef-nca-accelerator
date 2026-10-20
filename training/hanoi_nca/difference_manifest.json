@@ -1,0 +1,79 @@
+{
+  "schema": "clef.hanoi.nca-difference.v1",
+  "status": "proposed_at_G3_not_accepted_or_frozen",
+  "lineage": {
+    "immutable_original": "reference/original_nca/operator_manifest.json",
+    "accepted_interface": "docs/decisions/ADR-0002-original-nca-and-hanoi-interface.md",
+    "environment": "reference/hanoi/environment_manifest.json"
+  },
+  "unchanged_local_graph": {
+    "state_shape": [null, 32, 32, 6],
+    "layers": ["zero-padded 3x3x6->20 + ReLU", "1x1x20->30 + ReLU", "1x1x30->6 + linear"],
+    "parameter_count": 1916,
+    "residual_update": true,
+    "mask": "one Bernoulli bit per cell shared across all six channels",
+    "fire_rate": 0.5
+  },
+  "declared_hanoi_differences": {
+    "observations": "36 values in the accepted P04 order, one fixed input cell per value",
+    "input_coordinates": "training/hanoi_nca/layout_v1.json",
+    "outputs": "six fixed cells, channel-0 scores, ordered as ADR-0002; final local layer remains six state channels",
+    "output_coordinates": "training/hanoi_nca/layout_v1.json",
+    "episode_reset": "NCA grid reset at each baseline episode; state persists between moves",
+    "training": "six-output signal curriculum, complete-set supervised imitation, coherent DAgger; no DQN inheritance"
+  },
+  "measured_candidate_profile": {
+    "observation_normalization": "raw P04 values; binary fields unchanged and disk_count is n/8",
+    "redundancy": 1,
+    "score_scaling": "raw logits; no paper DQN divide-by-0.01",
+    "target": "complete-set cross-entropy with unit total mass",
+    "terminal_samples": "retained in corpus/evaluation, excluded from action loss",
+    "reward": null,
+    "illegal_action_loss": "no separate loss; non-target actions share ordinary classification pressure",
+    "runtime_legality_feedback": false,
+    "move_budget": "2*(2**n-1), host-side development budget",
+    "recurrent_steps": "uniform integer 20-24 inclusive for current software-training candidate; immutable original 50-59 retained as comparison and hardware epoch count not frozen",
+    "supervised_fire_rate": "1.0 deterministic optimization aid; DAgger and evaluation use 0.5",
+    "output_hidden_channels_4_5": "proposed clamp to exactly 1 after each update; raw accumulation measured separately",
+    "host_visible_feedback": "model receives only 36 observations; host receives six scores/action; legality, budget, terminal/truncated, hashes, and solution labels remain supervisor-only"
+  },
+  "candidate_disposition": {
+    "checkpoint": "experiments/p05/g3_candidate_nca.npz",
+    "sha256": "ffb1db3594e4257fa237975bf8da0134385f5f5b7f03bb65ecc87429ef87536b",
+    "finite": true,
+    "functional_freeze_eligible": false,
+    "reason": "weak open-loop generalization, 13/72 closed-loop completions, and non-finite coherent persistent-state DAgger near 70 moves",
+    "gate_recommendation": "accept interface choices but require bounded P05 stabilization before P06"
+  },
+  "hypothesis_a_stabilization": {
+    "status": "completed_negative_not_freeze_eligible",
+    "graph_changed": false,
+    "fire_rate_train_and_evaluation": 0.5,
+    "recurrent_schedule": "mixed 20-24 and 50-59; every fourth training iteration is long",
+    "curriculum": ["coherent standard starts", "coherent arbitrary states", "coherent on-policy DAgger"],
+    "peg_permutation_augmentation": "exact six-element peg permutation action on states and actions",
+    "training_only_auxiliaries": ["six legality bits", "three top-disk classes", "three peg-role classes", "largest unsettled subgoal disk"],
+    "training_state_limit": 10.0,
+    "inference_state_clamp": false,
+    "short_diagnostic_completions": "2/20",
+    "long_diagnostic_completions": "0/20",
+    "worst_case_soak": "510 decisions remained finite but reached approximately 2.066e36 and failed the bound",
+    "result": "experiments/p05_hypothesis_a/results.json",
+    "report": "docs/verification/P05_HYPOTHESIS_A.md",
+    "functional_freeze_eligible": false
+  },
+  "training_only": [
+    "canonical state and snapshot identities",
+    "complete optimal-action tuples",
+    "exact distances and optimality gaps",
+    "legality and termination metrics",
+    "dataset split and reset-mode labels"
+  ],
+  "explicitly_not_in_model_or_export": [
+    "transition grammar",
+    "solution tables or recursive rules",
+    "optimal actions or distances",
+    "legality mask or direct legality feedback",
+    "reward, success, terminal, truncated, budget count, or snapshot hash"
+  ]
+}

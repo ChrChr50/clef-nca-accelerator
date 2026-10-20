@@ -1,0 +1,79 @@
+{
+  "schema": "clef.hanoi.nca-difference.v2",
+  "status": "authorized_p05_experiment_not_frozen",
+  "decision": "docs/decisions/ADR-0004-p05-v2-relational-nca-experiment.md",
+  "lineage": {
+    "immutable_cartpole": "reference/original_nca/operator_manifest.json",
+    "accepted_logical_interface": "docs/decisions/ADR-0002-original-nca-and-hanoi-interface.md",
+    "hanoi_environment": "reference/hanoi/environment_manifest.json",
+    "preserved_v1_candidate": "training/hanoi_nca/difference_manifest.json"
+  },
+  "logical_interface": {
+    "n_max": 8,
+    "observation_width": 36,
+    "observation_order": "P04 disk-major four fields, goal one-hot, n/8",
+    "actions": ["0->1", "0->2", "1->0", "1->2", "2->0", "2->1"],
+    "action_selection": "raw channel-0 six-output argmax, lowest-index ties",
+    "legality_feedback_to_model": false,
+    "environment_and_budget": "host-side P04 only"
+  },
+  "grid": {
+    "shape_nhwc": [null, 32, 32, 8],
+    "layout": "training/hanoi_nca/layout_v2.json",
+    "initial_working_channels": "NumPy RandomState uniform [-0.1,0.1)",
+    "initial_marker_channels": 0,
+    "channels": {
+      "0": "evolving information and output score; hard-clamped observation at inputs",
+      "1_to_5": "evolving unlabeled working state; hard-clamped to zero at inputs",
+      "6": "fixed input-site marker, globally cleared and rewritten",
+      "7": "fixed output-site marker, globally cleared and rewritten"
+    },
+    "episode_reset": "new seeded grid; persistent between moves"
+  },
+  "local_graph": {
+    "layers": ["zero-padded 3x3x8->20 + ReLU", "1x1x20->30 + ReLU", "1x1x30->8 + linear"],
+    "all_layers_biased": true,
+    "parameter_count": 2338
+  },
+  "epoch": {
+    "pre_epoch": "clamp current 36 observations and rewrite fixed site markers before first local delta",
+    "old_state_reads": true,
+    "mask": "one Bernoulli uniform <= 0.5 bit per cell shared across all eight channels; supplied traces supported",
+    "residual": "float32 clamp(old + mask*delta, -5, 5)",
+    "post_residual": "clear channels 6/7 globally, fully clamp input sites, rewrite site markers and observation channel 0",
+    "inference_bound": [-5, 5],
+    "optional_noise": false
+  },
+  "training": {
+    "primary_loss": "complete-set optimal-action cross entropy, raw logits",
+    "curricula": ["source occupancy plus goal routing", "six action-legality bits"],
+    "sequence_phases": ["teacher-forced coherent multi-decision", "on-policy coherent DAgger"],
+    "fire_rate_train_and_evaluation": 0.5,
+    "candidate_steps": "uniform integer 20-24 inclusive; not frozen",
+    "terminal_action_loss": "excluded",
+    "reward": null,
+    "runtime_oracle": false,
+    "dataset_partition": "hash identity 80/10/10 within all n=1..8; training stops before held-out trajectory identities"
+  },
+  "deployment_exclusions": [
+    "Hanoi transition grammar",
+    "oracle action or distance",
+    "legality mask or direct legality feedback",
+    "reward",
+    "solution table or recursive algorithm"
+  ],
+  "measured_candidate": {
+    "results": "experiments/p05_v2/results.json",
+    "report": "docs/verification/P05_V2_RELATIONAL_NCA.md",
+    "checkpoint": "experiments/p05_v2/after_dagger_sequence.npz",
+    "checkpoint_sha256": "3260d6bdbbc3d08cd1232d103b930cb2d01c0c4034a4e3491f3d334e7feb9714",
+    "finite_checkpoint": true,
+    "bounded_510_decision_soak": true,
+    "held_out_open_loop_correct": 25,
+    "held_out_open_loop_cases": 194,
+    "standard_n1_to_n4_closed_loop_completed": 1,
+    "standard_n1_to_n4_closed_loop_episodes": 12,
+    "disposition": "negative policy experiment; no functional freeze"
+  },
+  "functional_freeze_eligible": false
+}

@@ -1,0 +1,24 @@
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.docx binary
+*.zip binary
+*.gz binary
+*.bin binary
+*.sof binary
+*.pof binary
+*.rbf binary
+*.gds binary
+*.gds2 binary
+
+# Preserve serialized evidence bytes used by SHA-256 validation.
+*.json -text whitespace=cr-at-eol
+*.jsonl -text whitespace=cr-at-eol
+*.md whitespace=-blank-at-eol
+docs/decisions/ADR-0011-freeze-released-model2-for-hardware.md -text
+docs/decisions/ADR-0012-cartpole-fixed-point-numerical-contract.md -text

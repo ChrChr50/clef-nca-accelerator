@@ -1,0 +1,47 @@
+name: smoke
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  repository-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Install locked Python dependencies
+        run: python -m pip install --require-hashes --requirement requirements/ci.lock
+      - name: Run scaffold and reproducibility checks
+        run: python scripts/run_smoke.py
+      - name: Run original NCA reference tests
+        run: python -m unittest discover -s reference/original_nca/tests -v
+      - name: Run CartPole deployment and qualification-harness tests
+        run: python -m unittest discover -s sw/cartpole/tests -v
+      - name: Run rights-safe local-export unit tests
+        run: python -m unittest model_export.cartpole.test_export_local -v
+      - name: Run candidate bit-accurate arithmetic and scheduling tests
+        run: python -m unittest model_export.cartpole.test_fixed_point model_export.cartpole.test_accepted_arithmetic -v
+      - name: Run historical Hanoi environment and oracle regressions
+        run: python -m unittest discover -s reference/hanoi/tests -v
+      - name: Run P08 accepted-width synthetic vector tests
+        run: python -m unittest tb.p08_primitives.test_vectors -v
+      - name: Install open RTL simulator
+        run: sudo apt-get update && sudo apt-get install -y iverilog
+      - name: Simulate P08 portable primitives (synthetic only)
+        run: python tb/p08_primitives/run.py
+      - name: Run P09 local-rule scalar/image tests
+        run: python -m unittest tb.p09_local_rule.test_support -v
+      - name: Simulate P09 local-rule lane alternatives (synthetic only)
+        run: python tb/p09_local_rule/run.py
+      - name: Run historical P05 adapter, layout, and dataset regressions
+        run: python -m unittest discover -s training/hanoi_nca/tests -v

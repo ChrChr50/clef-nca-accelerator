@@ -1,0 +1,26 @@
+{
+  "architecture": {
+    "channels": 8,
+    "fire_rate": 0.5,
+    "layout": "training\\hanoi_nca\\layout_v2.json",
+    "layout_sha256": "12e663e6ac397bb4049b1c2828e7e911924a3de3c2ce2836e2bda5782512dfcc",
+    "mask_predicate": "uniform <= fire_rate",
+    "observation_injected_before_first_epoch": true,
+    "parameters": 2338,
+    "state_bound": 5.0
+  },
+  "batch_size": 4,
+  "dagger_sequence_iterations": 80,
+  "eval_cases_per_split": 256,
+  "eval_max_n": 4,
+  "imitation_iterations": 320,
+  "legality_iterations": 80,
+  "output": "experiments\\p05_v2",
+  "routing_iterations": 80,
+  "seed": 305,
+  "sequence_decisions": 3,
+  "soak_moves": 510,
+  "step_max": 24,
+  "step_min": 20,
+  "teacher_sequence_iterations": 80
+}

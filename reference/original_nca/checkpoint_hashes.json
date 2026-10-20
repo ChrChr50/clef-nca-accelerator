@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "tensorflow_checkpoints_in_PretrainedModels_zip": {
+    "model1.data-00000-of-00001": "71b62a61611c766baa5688f2b37c419cc89b925ace8c81e503ce1b0b137c278b",
+    "model1.index": "178f99b38578946b0962c9e413024d3f135537f75af223b4b5c3eb9708075d28",
+    "model2.data-00000-of-00001": "ce162387fabee0bca887018fc9ad2436543fca4f3ebd1f772d6d4e27301f99cc",
+    "model2.index": "26752094ef2fd0d2aeac2eb184769d1481d4bca42582c125ddce1050e805efed",
+    "model3.data-00000-of-00001": "1592551e9103ef7e6c335b108d57bc350a56658296c7144ccb0198a2cfcd1b04",
+    "model3.index": "b6f5849b0f8166496f83531e865b132c26d56f24defdd190d205440d952403d8"
+  },
+  "tensorflowjs_checkpoints": {
+    "model1": "3f7d6a7b06c731c7b058ce461eabd23dbf9a5d92be55738e73c0093bc62e5074",
+    "model2": "ee8e4ad597d73dc616e60e91a5af056c96beb9f2c18652cfb1a1906247fbc009",
+    "model3": "2340f2eefc81164009ada62d7660b0378bd4bf48f548326e961bb7860d223f3b"
+  }
+}
+

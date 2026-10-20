@@ -1,0 +1,31 @@
+schema_version = 1
+
+[repository]
+visibility = "private"
+license_policy = "all-rights-reserved"
+rtl_language = "SystemVerilog"
+
+[smoke]
+python = "3.12"
+dependencies = "requirements/ci.lock"
+
+[fpga]
+platform = "Terasic DE1-SoC"
+device = "5CSEMA5F31C6N"
+backend = "Quartus Prime Lite"
+status = "provisional-not-installed"
+
+[verification]
+primary_lane = "open-source"
+status = "tools-not-installed"
+
+[asic_exploration]
+synthesis = "Yosys"
+physical_design = "OpenROAD"
+status = "technology-and-tool-versions-deferred-to-G7"
+
+[boundaries]
+portable_core = "rtl/core"
+fpga_wrappers = "rtl/wrappers/fpga"
+asic_wrappers = "rtl/wrappers/asic"
+board_integration = "boards/de1_soc"

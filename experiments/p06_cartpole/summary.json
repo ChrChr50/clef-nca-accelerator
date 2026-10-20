@@ -1,0 +1,24 @@
+{
+  "checkpoint_golden_pass": true,
+  "completed_episodes": 10,
+  "config_sha256": "e0c57dca542b7b5677381f27d573c4ba4e68533f2927c4d828c5f2b85556246e",
+  "horizon_completions": 6,
+  "model": "model2",
+  "qualification_pass": false,
+  "required_horizon_completions": 8,
+  "results_jsonl": "experiments/p06_cartpole/results.jsonl",
+  "schema_version": 1,
+  "seeds": [
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "tfjs_weight_blob_sha256": "ee8e4ad597d73dc616e60e91a5af056c96beb9f2c18652cfb1a1906247fbc009"
+}

@@ -1,0 +1,227 @@
+{
+  "acceptance_adr": "docs/decisions/ADR-0011-freeze-released-model2-for-hardware.md",
+  "arithmetic": "original float32; fixed-point choice pending G4",
+  "bound_artifacts": {
+    "docs/decisions/ADR-0011-freeze-released-model2-for-hardware.md": "667fa68d4b1904d3abc508323ef6330fef0243ad0ccabfdebde9e0e0e3a1ac47",
+    "experiments/p06_cartpole/results.jsonl": "7e63b5eddb23eb3a40527beb026d1e91360d91d54ed49073cf02d1b9b0ff85f5",
+    "experiments/p06_cartpole/summary.json": "885d5207577809c00ee35e8ada4c4378d324dc916c28060bcfd9134cab2d95b8",
+    "experiments/p06_upstream_parity/results/summary.json": "bbe1871b8732858b552b52127c99e157f372c1c63b9645458e3572d008862f29",
+    "reference/original_nca/cartpole.py": "4759fcc1ab8a395bc6ba1f191832aab3ccc938890342a6649310189435e3bf3d",
+    "reference/original_nca/core.py": "85ed232194337f70f47f5e7b87aa8929dbfa13a398aea45ad0966a72ccb3024b",
+    "reference/original_nca/operator_manifest.json": "9f25d01c3659ab1ccd98a147ff4fc1b48ee558386d3615495b2e9a0b55f0edc6",
+    "sw/cartpole/interface.v1.json": "cff1d9b98879cb3bd4d906158c990e91632b242b253b774bad6a18d37c5438bc",
+    "sw/cartpole/qualification.v1.json": "e0c57dca542b7b5677381f27d573c4ba4e68533f2927c4d828c5f2b85556246e",
+    "sw/cartpole/replay.v1.json": "0e00141c7451f0213600d8bfd1c01f5b72d1a654d1a3f7e000400229620b4a8d"
+  },
+  "episode": {
+    "balanced_terminal_action": 10001,
+    "damage": false,
+    "epochs_per_action": [
+      50,
+      59
+    ],
+    "fresh_grid": true,
+    "in_episode_reinitialization": false,
+    "input_deletion": false,
+    "noise": false,
+    "persistent_between_actions": true,
+    "plant_max_steps": 10000,
+    "timing": "step-synchronized; no accepted wall-clock deadline"
+  },
+  "graph": {
+    "layers": [
+      {
+        "activation": "ReLU",
+        "bias": [
+          20
+        ],
+        "kernel": [
+          3,
+          3,
+          6,
+          20
+        ],
+        "kind": "conv2d",
+        "padding": "SAME zero",
+        "parameters": 1100,
+        "stride": [
+          1,
+          1
+        ]
+      },
+      {
+        "activation": "ReLU",
+        "bias": [
+          30
+        ],
+        "kernel": [
+          1,
+          1,
+          20,
+          30
+        ],
+        "kind": "conv2d",
+        "padding": "VALID",
+        "parameters": 630,
+        "stride": [
+          1,
+          1
+        ]
+      },
+      {
+        "activation": "linear",
+        "bias": [
+          6
+        ],
+        "kernel": [
+          1,
+          1,
+          30,
+          6
+        ],
+        "kind": "conv2d",
+        "padding": "VALID",
+        "parameters": 186,
+        "stride": [
+          1,
+          1
+        ]
+      }
+    ],
+    "living_mask_applied": false,
+    "parameter_count_executable": 1916,
+    "parameter_count_paper": 1854,
+    "perception": "learned full-channel 3x3 cross-correlation; not a fixed Sobel bank and not depthwise",
+    "residual": "state_next = state + delta * update_mask before I/O rewrite",
+    "state_clipping": null
+  },
+  "host_boundary": "float64 plant -> four pre-action float32 observations -> controller scaling once",
+  "io": {
+    "input_coordinates": [
+      [
+        11,
+        26
+      ],
+      [
+        25,
+        20
+      ],
+      [
+        5,
+        20
+      ],
+      [
+        19,
+        6
+      ],
+      [
+        19,
+        26
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        25,
+        12
+      ],
+      [
+        11,
+        6
+      ]
+    ],
+    "input_deletion": "remove the selected input from both clamp and marker sets; it becomes an intermediate cell",
+    "observation_order": [
+      "cart_position",
+      "cart_velocity",
+      "pole_angle",
+      "pole_angular_velocity"
+    ],
+    "observation_scale": [
+      2.0,
+      0.25,
+      4.0,
+      0.15
+    ],
+    "output_coordinates": [
+      [
+        13,
+        16
+      ],
+      [
+        17,
+        16
+      ]
+    ],
+    "redundancy": 2,
+    "write_order": [
+      "evaluate delta from pre-clamp state",
+      "apply stochastic residual update",
+      "clear channels 2 and 3 globally",
+      "clear every channel at active input cells",
+      "add input/output marker template",
+      "scatter scaled observations into input channel 0"
+    ]
+  },
+  "qualification": {
+    "episodes": 10,
+    "freeze_basis": "explicit accepted ADR-0011 override",
+    "horizon_completions": 6,
+    "original_pass": false,
+    "paper_statistics_reproduced": false
+  },
+  "readout": {
+    "action": "argmax over outputs",
+    "dqn_q_value_scale": "divide by 0.01",
+    "tie_break": "lowest action index",
+    "values": "channel 0 at the two output coordinates"
+  },
+  "replay": {
+    "draw_order": "plant reset; per action randint(50,60); then C-order masks",
+    "grid_rng_seed": "episode seed XOR 0x5A17",
+    "initial_grid": "uniform[-0.1,0.1) [1,32,32,6] cast float32",
+    "initial_plant": "uniform[-0.05,0.05) four float64 values",
+    "logical_ownership": "draws independent of physical service stalls",
+    "mask_bit_order": "little",
+    "mask_predicate": "random_sample <= 0.5",
+    "mask_shape": [
+      "epochs",
+      1,
+      32,
+      32,
+      1
+    ],
+    "plant_and_draw_rng_seed": "episode seed",
+    "rng": "NumPy RandomState MT19937"
+  },
+  "schema_version": 1,
+  "state": {
+    "channels": {
+      "0": "information and action-score readout",
+      "1": "hidden; forced to 1 at active inputs",
+      "2": "input identifier; globally cleared and rewritten each step",
+      "3": "output identifier; globally cleared and rewritten each step",
+      "4": "hidden; forced to 1 at inputs and incremented by 1 at outputs each step",
+      "5": "hidden; forced to 1 at inputs and incremented by 1 at outputs each step"
+    },
+    "dtype": "float32",
+    "initialization": "NumPy uniform [-0.1,0.1), then float32",
+    "layout": "NHWC",
+    "shape": [
+      null,
+      32,
+      32,
+      6
+    ]
+  },
+  "status": "frozen-by-explicit-user-decision",
+  "upstream_revision": "8c85be11b0838ea14ac51a11dac3098db43afed2",
+  "weights": {
+    "blob_sha256": "ee8e4ad597d73dc616e60e91a5af056c96beb9f2c18652cfb1a1906247fbc009",
+    "model": "model2",
+    "parameter_count": 1916,
+    "rights": "local-only; no redistribution of weights or derived images",
+    "source": "self-organized-control/demo/models/model2"
+  }
+}

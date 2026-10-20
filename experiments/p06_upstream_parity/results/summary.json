@@ -1,0 +1,75 @@
+{
+  "blob_sha256": "ee8e4ad597d73dc616e60e91a5af056c96beb9f2c18652cfb1a1906247fbc009",
+  "complete": true,
+  "first_action_disagreement": null,
+  "first_nonbitwise_grid_action": 1,
+  "first_tolerance_breach_action": null,
+  "identical_input_probe": {
+    "delta": {
+      "bitwise_equal": false,
+      "elements_outside_p03_tolerance": 0,
+      "max_abs": 1.4901161193847656e-07,
+      "rmse": 1.8573048780249375e-08
+    },
+    "step": {
+      "bitwise_equal": false,
+      "elements_outside_p03_tolerance": 0,
+      "max_abs": 1.1920928955078125e-07,
+      "rmse": 1.2811697678788512e-08
+    }
+  },
+  "initial_grid_sha256": "c6b646cb6e8b8a0d575c572dbfdc027e6c2ccc00040826d833474f779f46ff06",
+  "initial_plant_sha256": "2b6fc782c4fb07ecdf593d0af5771cd902c161568be21632b4fb650c5eb91b1d",
+  "local": {
+    "actions": 1334,
+    "actions_sha256": "dd7635921ca8c1417f132eff49c984e8d19512e83a686102b21549c6899944fa",
+    "done": true,
+    "grid_sha256": "dd2f3f740ceafbedb508c7ee32ac44ef91f9f73ac93387d45c0d9b50ab5225d2",
+    "ordered_mask_hashes_sha256": "0c600f8cd619245ff81db7ea58c92b895c5bb905b491d74d622289d59cfd413c",
+    "plant_sha256": "9c4d694eea73bec95944806f00314646974b63ef0dad381f44cf3601b002af6b",
+    "reason": "pole_angle_limit",
+    "score": 1307.0921457820718
+  },
+  "local_matches_recorded_p06": {
+    "actions": true,
+    "actions_sha256": true,
+    "final_grid_sha256": true,
+    "final_plant_sha256": true,
+    "ordered_mask_hashes_sha256": true,
+    "score": true,
+    "termination_reason": true
+  },
+  "local_runtime": {
+    "numpy": "2.3.5",
+    "python": "3.12.14"
+  },
+  "max_grid_error_before_action_disagreement": 5.0067901611328125e-06,
+  "model": "model2",
+  "ordered_mask_hashes_sha256": "0c600f8cd619245ff81db7ea58c92b895c5bb905b491d74d622289d59cfd413c",
+  "paired_actions": 1334,
+  "runner_sha256": "03b8926e1661f78ac4297f237cd6463368ccb2b465b5420ae22cf2045919361b",
+  "schema_version": 1,
+  "seed": 12,
+  "source_io_contract_bitwise_equal": true,
+  "upstream": {
+    "actions": 1334,
+    "actions_sha256": "dd7635921ca8c1417f132eff49c984e8d19512e83a686102b21549c6899944fa",
+    "done": true,
+    "grid_sha256": "c0e399a17a5d68046ae0e3dbf11d52598404f9bd836b4103fa79298e366349c6",
+    "ordered_mask_hashes_sha256": "0c600f8cd619245ff81db7ea58c92b895c5bb905b491d74d622289d59cfd413c",
+    "plant_sha256": "9c4d694eea73bec95944806f00314646974b63ef0dad381f44cf3601b002af6b",
+    "reason": "pole_angle_limit",
+    "score": 1307.0921457820718
+  },
+  "upstream_revision": "8c85be11b0838ea14ac51a11dac3098db43afed2",
+  "upstream_runtime": {
+    "keras": "2.15.0",
+    "numpy": "1.26.4",
+    "oneDNN": false,
+    "python": "3.11.9",
+    "ready": true,
+    "source_module": "self-organized-control/code/SelfOrgControl/NeuralCA.py",
+    "tensorflow": "2.15.1"
+  },
+  "worker_sha256": "d8474a3a6da68017d6c54d2a934930a7230e45c95d1f9305d11924184611304d"
+}

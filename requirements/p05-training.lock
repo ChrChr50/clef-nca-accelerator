@@ -1,0 +1,12 @@
+# P05 measured Windows CPU training environment (Python 3.12.14).
+# The portable CI environment remains requirements/ci.lock; this heavier lock is
+# used only to reproduce model fitting and is not required for inference artifacts.
+torch==2.14.0
+filelock==4.0.1
+fsspec==2026.9.0
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+mpmath==1.3.0
+networkx==3.6.1
+sympy==1.14.0
+numpy==2.3.5

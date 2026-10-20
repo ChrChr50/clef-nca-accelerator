@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "p06-model2-source-default-qualification",
+  "authority": {
+    "decision": "docs/decisions/ADR-0009-cartpole-readiness-and-event-boundary.md",
+    "upstream_revision": "8c85be11b0838ea14ac51a11dac3098db43afed2",
+    "model": "model2",
+    "tfjs_weight_blob_sha256": "ee8e4ad597d73dc616e60e91a5af056c96beb9f2c18652cfb1a1906247fbc009",
+    "operator": "reference/original_nca/operator_manifest.json",
+    "plant": "reference/original_nca/cartpole.py",
+    "interface": "sw/cartpole/interface.v1.json",
+    "replay": "sw/cartpole/replay.v1.json"
+  },
+  "seeds": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+  "success_threshold": {
+    "minimum_horizon_completions": 8,
+    "required_completed_episodes": 10,
+    "required_checkpoint_golden_pass": true
+  },
+  "episode": {
+    "plant": "CartPole.reset(np.random.RandomState(seed))",
+    "plant_rng_draws_first": "four float64 uniform[-0.05,0.05) values",
+    "plant_max_steps_field": 10000,
+    "horizon_action_count": 10001,
+    "initial_grid": "seeded_initial_grid(seed ^ 0x5A17), independent RandomState",
+    "grid_persistence": "between actions within one episode; fresh at next episode",
+    "in_episode_reinitialization_probability": 0.0,
+    "noise": false,
+    "damage": false,
+    "input_deletion": false,
+    "synchronization": "complete controller decision, then one source plant step"
+  },
+  "logical_rng_assignment": {
+    "algorithm": "NumPy RandomState MT19937, current pinned NumPy 2.3.5",
+    "plant_schedule_mask_stream": "one RandomState(seed) per episode, reset draws first",
+    "per_action_order": [
+      "one rng.randint(50,60) for recurrent epoch count",
+      "one contiguous rng.random_sample((epochs,1,32,32,1)) call",
+      "mask true iff sample <= 0.5; C-order epoch,row,column assignment"
+    ],
+    "noise_damage_draws": "none",
+    "physical_stall_dependence": "none; draws attach to logical action, epoch and cell"
+  },
+  "result_policy": {
+    "success": "terminal at 10001 actions with cart and pole still within source limits",
+    "score": "sum of source runtime cosine reward including terminal transition",
+    "incomplete": "checkpointed interruption is neither a pass nor a failed ten-seed result",
+    "no_retry_pooling": true
+  },
+  "rights": "local-only ignored model2 blob; no weight tensors/images committed or shared"
+}

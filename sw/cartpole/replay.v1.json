@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "name": "reference-cartpole-deterministic-replay",
+  "interface_manifest": "sw/cartpole/interface.v1.json",
+  "scope": "one declared controller decision and one source plant transition per record",
+  "episode_inputs_required": {
+    "plant_initial_state": "four little-endian float64 values plus initial step_count and max_steps field",
+    "controller_initial_grid": "[1,32,32,6] little-endian float32 snapshot, external artifact or supplied fixture",
+    "weights": "local pinned checkpoint identity or synthetic fixture; checkpoint bytes remain ignored/restricted",
+    "cross_episode_reset": "explicit caller choice; never inferred by replay",
+    "schedule": "per-decision 50-59 count and exact ordered per-epoch mask trace",
+    "noise": "exact optional float32 array per epoch; absent means no update noise",
+    "damage": "if later enabled, exact placement and draw arrays must be declared; not implicit in E01 wrapper"
+  },
+  "mask_encoding": {
+    "shape_per_epoch": [1, 32, 32, 1],
+    "flatten_order": "C",
+    "packed_bit_order": "little",
+    "hash": "SHA-256 over packed mask bits in epoch order"
+  },
+  "decision_record_fields": ["observation_f32le_hex", "plant_before_sha256", "masks_sha256", "noise_sha256", "recurrent_steps", "action", "raw_scores_f32le_hex", "controller_after_sha256", "plant_after_sha256", "reward", "terminal", "elapsed_plant_steps"],
+  "hash_serialization": {
+    "plant": "SHA-256 of four C-order little-endian float64 values",
+    "controller": "SHA-256 of C-order little-endian float32 grid; optional read-only backend trace",
+    "noise": "SHA-256 of C-order little-endian float32 array when present"
+  },
+  "comparison": {
+    "same_runtime": "exact action, trace, plant and controller hashes from identical inputs/draws",
+    "cross_runtime_float": "use P03 declared full-array tolerance; do not assume NumPy byte hashes transfer across arithmetic runtimes",
+    "future_fixed_point": "P07 scheduled golden model owns bit-exact RTL comparison, not this float wrapper"
+  },
+  "horizon": {
+    "released": "CartPole.max_steps=10000, done on step_count>10000",
+    "long_duration_diagnostic": "separate 30000-action capped reconstruction; never silently substitute for released protocol"
+  },
+  "unresolved_g3e": ["checkpoint_identity", "episode_grid_reset", "deployed_mask_rng_seed_and_draw_assignment", "noise_damage_mode", "control_acceptance_thresholds", "wall_clock_pacing_and_deadline", "weights_redistribution_rights", "event_variant_commitment"]
+}

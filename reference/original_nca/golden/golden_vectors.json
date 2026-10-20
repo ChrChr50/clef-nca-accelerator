@@ -1,0 +1,182 @@
+{
+  "byte_contract": "C-order little-endian IEEE-754 binary32",
+  "cases": [
+    {
+      "checkpoint": "synthetic-v1",
+      "complete_step_readout": [
+        -0.08193790167570114,
+        -0.09344522655010223
+      ],
+      "complete_step_sha256_f32le": "bda5e97e04b08031682169777061d4d210f4d7ccc718385ead105d272bf31292",
+      "fixed_cartpole_rollout": {
+        "actions_sha256": "706014c5fa691b9f869f7a37570c5750dbeb6da1e242f92fbe904b302edf560d",
+        "environment_step_cap": 8,
+        "reward_sum": 7.993860081517802,
+        "seed": 31415,
+        "steps": 8
+      },
+      "initial_grid_seed": 1701,
+      "local_delta_sha256_f32le": "b7e627c4b81b53a66759b44b47241fc6c57de30fb7d8330e4a9d1f946728ec01",
+      "mask_seed": 2701,
+      "observations": [
+        0.009999999776482582,
+        -0.019999999552965164,
+        0.029999999329447746,
+        -0.03999999910593033
+      ],
+      "rollout_readouts": [
+        [
+          -0.08193790167570114,
+          -0.09344522655010223
+        ],
+        [
+          -0.07559529691934586,
+          -0.08725599199533463
+        ],
+        [
+          -0.07559529691934586,
+          -0.07865022867918015
+        ],
+        [
+          -0.07559529691934586,
+          -0.07865022867918015
+        ]
+      ],
+      "rollout_sha256_f32le": "e9f74b884e802be56b4d89a4611c31a6a0442dd452ccb81bb2e02e5a5d5bea1b",
+      "steps": 4
+    },
+    {
+      "checkpoint": "model1",
+      "complete_step_readout": [
+        -0.08193790167570114,
+        -0.40011081099510193
+      ],
+      "complete_step_sha256_f32le": "0f64be29dd7a15f1d9daa93f99f8d575cfabc851e8c57a2be49919d68a91654a",
+      "fixed_cartpole_rollout": {
+        "actions_sha256": "5a9c95fa7da8126f7cc6f23f88544ea884e7bdacb05914b0cc3c43b53fb4ea12",
+        "environment_step_cap": 8,
+        "reward_sum": 7.994160194563428,
+        "seed": 31415,
+        "steps": 8
+      },
+      "initial_grid_seed": 1701,
+      "local_delta_sha256_f32le": "9eb355447dddec8522dba73a453970c727a511faeb8760afaa4b39c61696988e",
+      "mask_seed": 2701,
+      "observations": [
+        0.009999999776482582,
+        -0.019999999552965164,
+        0.029999999329447746,
+        -0.03999999910593033
+      ],
+      "rollout_readouts": [
+        [
+          -0.08193790167570114,
+          -0.40011081099510193
+        ],
+        [
+          -0.38499975204467773,
+          -0.31203407049179077
+        ],
+        [
+          -0.38499975204467773,
+          -0.2663033902645111
+        ],
+        [
+          -0.38499975204467773,
+          -0.2663033902645111
+        ]
+      ],
+      "rollout_sha256_f32le": "cbf96c6726a657598c55ffd757f456896460bc22458b83f1f2df0635de028aa7",
+      "steps": 4
+    },
+    {
+      "checkpoint": "model2",
+      "complete_step_readout": [
+        -0.08193790167570114,
+        -0.07856735587120056
+      ],
+      "complete_step_sha256_f32le": "5494467d408a627748037ccfcbe47c3d5967416654841be5ca5de6927338f319",
+      "fixed_cartpole_rollout": {
+        "actions_sha256": "96a2f0ce8b77dcb57cc3d1d62e0f9511100939911812f366aada3b32d7f58101",
+        "environment_step_cap": 8,
+        "reward_sum": 7.995007840541004,
+        "seed": 31415,
+        "steps": 8
+      },
+      "initial_grid_seed": 1701,
+      "local_delta_sha256_f32le": "32e6ff60a4e70fec509aca6ae51a5ccd3711b35cd8cd2bfca4fe595685b13e20",
+      "mask_seed": 2701,
+      "observations": [
+        0.009999999776482582,
+        -0.019999999552965164,
+        0.029999999329447746,
+        -0.03999999910593033
+      ],
+      "rollout_readouts": [
+        [
+          -0.08193790167570114,
+          -0.07856735587120056
+        ],
+        [
+          -0.03628147393465042,
+          -0.0337459035217762
+        ],
+        [
+          -0.03628147393465042,
+          -0.02149689570069313
+        ],
+        [
+          -0.03628147393465042,
+          -0.02149689570069313
+        ]
+      ],
+      "rollout_sha256_f32le": "ba323bcebd50d28857e7be232cb16e8fa5a9904775c3448a3cb9d4bc09a049a8",
+      "steps": 4
+    },
+    {
+      "checkpoint": "model3",
+      "complete_step_readout": [
+        -0.08193790167570114,
+        -0.19875536859035492
+      ],
+      "complete_step_sha256_f32le": "cbfe5482f74fb53b7f13ad8f2e6a0bdca66eb1d7ac396da061cfbb977bb21417",
+      "fixed_cartpole_rollout": {
+        "actions_sha256": "682ba4dfb8d7b3cc0e2fa80b0472f9ab580bf5d70a5b19683b3a69568958f75a",
+        "environment_step_cap": 8,
+        "reward_sum": 7.992137592665515,
+        "seed": 31415,
+        "steps": 8
+      },
+      "initial_grid_seed": 1701,
+      "local_delta_sha256_f32le": "66ad23a3adc15659b4d8d5e8053da0ba1a6d54b5da32f4a3852d50c7f0702e7a",
+      "mask_seed": 2701,
+      "observations": [
+        0.009999999776482582,
+        -0.019999999552965164,
+        0.029999999329447746,
+        -0.03999999910593033
+      ],
+      "rollout_readouts": [
+        [
+          -0.08193790167570114,
+          -0.19875536859035492
+        ],
+        [
+          -0.1928877979516983,
+          -0.240963876247406
+        ],
+        [
+          -0.1928877979516983,
+          -0.2951960861682892
+        ],
+        [
+          -0.1928877979516983,
+          -0.2951960861682892
+        ]
+      ],
+      "rollout_sha256_f32le": "95f5a2615febb7d6fdeb4541a079ff27a70ea35cbdc312e1125e4440cf41ac8a",
+      "steps": 4
+    }
+  ],
+  "schema_version": 1
+}

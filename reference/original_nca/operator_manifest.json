@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "identity": {
+    "name": "variengien-et-al-cartpole-nca-clean-room-reference",
+    "upstream_revision": "8c85be11b0838ea14ac51a11dac3098db43afed2",
+    "authority_order": [
+      "pinned executable source and shipped checkpoint manifests",
+      "paper",
+      "interactive JavaScript demo"
+    ]
+  },
+  "state": {
+    "shape": [null, 32, 32, 6],
+    "dtype": "float32",
+    "layout": "NHWC",
+    "initialization": "NumPy uniform [-0.1,0.1), then float32",
+    "channels": {
+      "0": "information and action-score readout",
+      "1": "hidden; forced to 1 at active inputs",
+      "2": "input identifier; globally cleared and rewritten each step",
+      "3": "output identifier; globally cleared and rewritten each step",
+      "4": "hidden; forced to 1 at inputs and incremented by 1 at outputs each step",
+      "5": "hidden; forced to 1 at inputs and incremented by 1 at outputs each step"
+    }
+  },
+  "graph": {
+    "layers": [
+      {
+        "kind": "conv2d",
+        "kernel": [3, 3, 6, 20],
+        "bias": [20],
+        "padding": "SAME zero",
+        "stride": [1, 1],
+        "activation": "ReLU",
+        "parameters": 1100
+      },
+      {
+        "kind": "conv2d",
+        "kernel": [1, 1, 20, 30],
+        "bias": [30],
+        "padding": "VALID",
+        "stride": [1, 1],
+        "activation": "ReLU",
+        "parameters": 630
+      },
+      {
+        "kind": "conv2d",
+        "kernel": [1, 1, 30, 6],
+        "bias": [6],
+        "padding": "VALID",
+        "stride": [1, 1],
+        "activation": "linear",
+        "parameters": 186
+      }
+    ],
+    "perception": "learned full-channel 3x3 cross-correlation; not a fixed Sobel bank and not depthwise",
+    "parameter_count_executable": 1916,
+    "parameter_count_paper": 1854,
+    "residual": "state_next = state + delta * update_mask before I/O rewrite",
+    "state_clipping": null,
+    "living_mask_applied": false
+  },
+  "stochastic_update": {
+    "fire_rate": 0.5,
+    "predicate": "uniform <= fire_rate",
+    "mask_shape": [null, 32, 32, 1],
+    "mask_shared_across_channels": true,
+    "optional_noise": "delta += 0.01 * uniform[-1,1) before masking"
+  },
+  "io": {
+    "input_coordinates": [[11,26],[25,20],[5,20],[19,6],[19,26],[5,12],[25,12],[11,6]],
+    "output_coordinates": [[13,16],[17,16]],
+    "observation_order": ["cart_position","cart_velocity","pole_angle","pole_angular_velocity"],
+    "observation_scale": [2.0,0.25,4.0,0.15],
+    "redundancy": 2,
+    "write_order": [
+      "evaluate delta from pre-clamp state",
+      "apply stochastic residual update",
+      "clear channels 2 and 3 globally",
+      "clear every channel at active input cells",
+      "add input/output marker template",
+      "scatter scaled observations into input channel 0"
+    ],
+    "input_deletion": "remove the selected input from both clamp and marker sets; it becomes an intermediate cell"
+  },
+  "readout": {
+    "values": "channel 0 at the two output coordinates",
+    "dqn_q_value_scale": "divide by 0.01",
+    "action": "argmax over outputs",
+    "tie_break": "lowest action index"
+  },
+  "schedule": {
+    "source_bounds": [50,60],
+    "upper_bound_exclusive": true,
+    "executed_step_values": [50,51,52,53,54,55,56,57,58,59],
+    "hidden_state": "pool state committed after every prediction; one-grid evaluation pool therefore persists across environment moves",
+    "episode_reset": "paper says one random grid per simulation; current test harness does not explicitly reset its one-element grid pool between episodes"
+  },
+  "training": {
+    "curriculum": "first train both outputs to four times the mean of eight synthetic inputs, then load those weights for DQN",
+    "grid_pool_size": 100,
+    "batch_size": 16,
+    "environment_state_pool_size": 10,
+    "environment_steps_per_exploration": 2,
+    "grid_reinitialize_probability": 0.01,
+    "pool_damage_probability": 0.5,
+    "damage": "random circle: center uniform[-0.5,0.5), radius uniform[0.3,0.4), all channels replaced uniform[-1,1)",
+    "gamma": 0.95,
+    "epsilon_initial": 1.0,
+    "epsilon_min": 0.01,
+    "epsilon_decay": 0.999,
+    "replay_capacity": 50000,
+    "replay_start": 1000,
+    "replay_batch": 128,
+    "optimizer": "Adam",
+    "learning_rate_schedule_not_applied_gap": "a PiecewiseConstantDecay is constructed but the model is instantiated with scalar 0.005",
+    "loss": "0.5 * mean squared selected-output error + 100 * mean squared overflow outside [-5,5]",
+    "gradient_rule": "each weight gradient divided by its own L2 norm plus 1e-8"
+  },
+  "environment": {
+    "actions": ["push_left","push_right"],
+    "dynamics": "classic CartPole explicit Euler, tau 0.02",
+    "termination": "abs(x)>2.4 or abs(theta)>12 degrees or step_count>10000",
+    "runtime_reward": "cos(x*pi/(2*2.4)) squared, including terminal step",
+    "training_terminal_target": -100,
+    "paper_reward_discrepancy": "paper describes -100 terminal reward; executable environment returns cosine reward and DQN wrapper substitutes -100 only in replay memory"
+  },
+  "exact_comparison": {
+    "inputs": "identical weights, float32 state, observations, masks, and optional noise/damage draws",
+    "boundaries": [
+      "local_delta",
+      "complete_step",
+      "readout",
+      "four_step_checkpoint_rollout",
+      "fixed_checkpoint_cartpole_rollout",
+      "seeded_update_mask_and_supplied_noise",
+      "supplied_trace_damage",
+      "pool_persistence_and_reinitialization"
+    ],
+    "byte_contract": "C-order little-endian IEEE-754 binary32",
+    "hash_equality_runtime": {
+      "platform": "Windows x86-64",
+      "python": "3.12.14",
+      "numpy": "2.3.5"
+    },
+    "cross_platform_golden": {
+      "artifact": "golden/golden_arrays.npz",
+      "comparison": "elementwise",
+      "rtol": 0.00002,
+      "atol": 0.00002
+    },
+    "backend_note": "exact hashes require the declared arithmetic runtime; Windows/Linux NumPy wheels may choose different floating reduction orders, so cross-platform CI compares complete stored arrays elementwise at the declared tolerance",
+    "cross_episode_reset_gap": "the released evaluation harness persists its one-element grid pool across episodes; paper prose says a random grid starts each simulation, so no unobserved historical episode-reset policy is claimed"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "checkpoint_sha256": "ef510abad673856c6230d51b3a10d801f64195c075242643c11362ffff1b159a",
+  "latest": {
+    "fresh": {
+      "accuracy": 0.0,
+      "available_states": 4,
+      "decisions": 16,
+      "grid_seeds": 4,
+      "legality_bit_accuracy": 0.4375,
+      "max_abs_state": 3.1391024589538574,
+      "mean_optimal_margin": -0.4930189868900925,
+      "unique_states": 4
+    },
+    "iteration": 2250,
+    "persistent": {
+      "accuracy": 0.375,
+      "available_states": 4,
+      "decisions": 8,
+      "grid_seeds": 4,
+      "legality_bit_accuracy": 0.6041666666666666,
+      "max_abs_state": 3.257463216781616,
+      "mean_optimal_margin": -0.14777764724567533,
+      "unique_states": 4
+    },
+    "stage": 2,
+    "total_iterations": 4250,
+    "train": {
+      "fresh_rows": 5,
+      "grad_norm": 14.972909927368164,
+      "loss": 0.3647969290614128,
+      "max_abs_state": 2.620173692703247,
+      "steps": 51
+    }
+  },
+  "schema": "clef.p05.hanoi-v7-action-value.r2",
+  "stage": 2,
+  "stage_iteration": 2250,
+  "status": "stopped_for_user_requested_baseline_reversion",
+  "stop_reason": "User requested return to the prior v6 teaching architecture and design review; trainer stopped after the 4,250-update checkpoint.",
+  "total_iterations": 4250
+}

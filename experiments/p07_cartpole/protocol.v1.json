@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "stage": "P07/G4; alternatives only, no accepted arithmetic",
+  "freeze": "sw/cartpole/deployment.freeze.v1.json",
+  "calibration": {
+    "seeds": [10, 12],
+    "reuse": "Previously measured P06 seeds; never called held out",
+    "full_float_profile_seed": 10,
+    "float_profile_max_actions": 10001,
+    "state_and_residual_range_sampling": "every epoch",
+    "layer_range_sampling": "epoch 1 then every 64 epochs",
+    "fixed_candidate_actions": 128
+  },
+  "acceptance": {
+    "seeds": [20, 21],
+    "reuse": "New P07 seeds; do not tune formats or thresholds on these results",
+    "max_actions": 256,
+    "interpretation": "Bounded numerical/control comparison; not full-horizon reliability"
+  },
+  "stress": {
+    "name": "synthetic marker-only worst recurrent count",
+    "epochs": 590059,
+    "interpretation": "Zero-delta diagnostic, not the deployed checkpoint"
+  },
+  "candidates": [
+    {"name": "compact18", "state_bits": 18, "state_fraction": 12, "weight_bits": 16, "weight_fraction": 14, "accumulator_bits": 40},
+    {"name": "balanced24", "state_bits": 24, "state_fraction": 16, "weight_bits": 18, "weight_fraction": 16, "accumulator_bits": 48},
+    {"name": "fidelity32", "state_bits": 32, "state_fraction": 24, "weight_bits": 24, "weight_fraction": 22, "accumulator_bits": 62}
+  ],
+  "candidate_contract": {
+    "rounding": "round to nearest, ties to even; symmetric for negative values",
+    "overflow": "signed saturation with counters; never wrap silently",
+    "bias": "after all exact integer products, at product scale",
+    "relu": "after bias, before output requantization",
+    "layer_outputs": "state format",
+    "residual": "one guard bit for addition, then state saturation",
+    "io": "source clear/clamp/marker/observation order; output marker addition saturates",
+    "observation": "unscaled pre-action float32 -> float32 source scales once -> state quantization",
+    "schedule": "50-59 old-grid epochs; supplied identical logical mask draws",
+    "action": "argmax of integer channel-0 readouts; lowest-index tie"
+  }
+}

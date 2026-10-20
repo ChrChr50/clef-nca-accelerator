@@ -1,0 +1,20 @@
+[project]
+name = "clef-nca-accelerator"
+version = "0.0.0"
+description = "Private Clef/NCA accelerator development repository"
+requires-python = ">=3.12,<3.13"
+license = { text = "Proprietary - all rights reserved" }
+dependencies = ["numpy==2.3.5"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+extend-exclude = ["tmp", "artifacts", "build", "third_party"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"

@@ -1,0 +1,58 @@
+{
+  "batch_size": 16,
+  "checkpoint_every": 250,
+  "fresh_fraction": 0.5,
+  "layout_sha256": "ae21358d329d440c1503081d1fa1215086b897252d1dddedd9af3ffa71064f0d",
+  "learning_rate": 0.0003,
+  "microbatch_size": 4,
+  "min_stage_iterations": 500,
+  "output_semantics": "channel0 signed one-step progress; channel1 auxiliary legality logit",
+  "pool_size": 128,
+  "schema": "clef.p05.hanoi-v7-action-value.r2",
+  "seed": 705,
+  "seed_checkpoint_sha256": "af8ece9a7e2ed21d46a6a1574c2077d9ea8ba4446857e8c58dd5187e83835147",
+  "stages": [
+    [
+      2,
+      12,
+      24,
+      1000,
+      null
+    ],
+    [
+      2,
+      25,
+      40,
+      1000,
+      null
+    ],
+    [
+      2,
+      50,
+      59,
+      5000,
+      0.85
+    ],
+    [
+      4,
+      50,
+      59,
+      6000,
+      0.8
+    ],
+    [
+      6,
+      50,
+      59,
+      7000,
+      0.8
+    ],
+    [
+      8,
+      50,
+      59,
+      8000,
+      0.8
+    ]
+  ]
+}

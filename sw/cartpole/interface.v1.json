@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "reference-cartpole-host-controller-interface",
+  "status": "E01 structural contract; checkpoint and episode protocol require G3E",
+  "authority": {
+    "upstream_revision": "8c85be11b0838ea14ac51a11dac3098db43afed2",
+    "operator_manifest": "reference/original_nca/operator_manifest.json",
+    "operator_manifest_sha256": "9f25d01c3659ab1ccd98a147ff4fc1b48ee558386d3615495b2e9a0b55f0edc6",
+    "plant_module": "reference/original_nca/cartpole.py",
+    "plant_module_sha256": "4759fcc1ab8a395bc6ba1f191832aab3ccc938890342a6649310189435e3bf3d",
+    "operator_module": "reference/original_nca/core.py",
+    "operator_module_sha256": "85ed232194337f70f47f5e7b87aa8929dbfa13a398aea45ad0966a72ccb3024b"
+  },
+  "plant": {
+    "state_order": ["cart_position", "cart_velocity", "pole_angle", "pole_angular_velocity"],
+    "state_units": ["m", "m/s", "rad", "rad/s"],
+    "state_encoding": "IEEE-754 little-endian binary64, four values",
+    "integrator": "source explicit Euler",
+    "simulated_step_seconds": 0.02,
+    "action_order": ["push_left", "push_right"],
+    "action_codes": [0, 1],
+    "force_newtons": [-10.0, 10.0],
+    "termination": "abs(x)>2.4 or abs(theta)>12 degrees or step_count>10000",
+    "released_max_steps_field": 10000,
+    "released_last_action_count_if_balanced": 10001,
+    "runtime_reward": "cos(x*pi/(2*2.4))^2 after transition, including terminal step",
+    "training_terminal_target": "-100 in DQN replay only; not the plant runtime reward"
+  },
+  "host_to_controller": {
+    "observation_encoding": "IEEE-754 little-endian binary32, four values",
+    "observation_order": ["cart_position", "cart_velocity", "pole_angle", "pole_angular_velocity"],
+    "sample_point": "pre-action plant state",
+    "input_scale": [2.0, 0.25, 4.0, 0.15],
+    "duplicates_per_observation": 2,
+    "scaled_site_order": [0, 0, 1, 1, 2, 2, 3, 3],
+    "input_coordinates_row_col": [[11, 26], [25, 20], [5, 20], [19, 6], [19, 26], [5, 12], [25, 12], [11, 6]],
+    "recurrent_steps_allowed": [50, 51, 52, 53, 54, 55, 56, 57, 58, 59],
+    "mask_shape_per_epoch": [1, 32, 32, 1],
+    "mask_predicate": "uniform <= 0.5; one bit per cell shared by six channels",
+    "optional_noise": "float32 [epochs,1,32,32,6], added to delta before masking",
+    "schedule_and_rng_policy": "explicit traces at E01 replay seam; not a physical bus requirement; G3E chooses deployed generator/seed boundaries"
+  },
+  "controller": {
+    "grid_shape": [1, 32, 32, 6],
+    "grid_encoding": "IEEE-754 little-endian binary32 NHWC",
+    "learned_parameters": 1916,
+    "step_order": ["delta_from_old_grid", "masked_residual", "global_clear_channels_2_3", "full_clear_active_input_sites", "add_input_output_markers", "add_scaled_observations_to_input_channel_0"],
+    "output_hidden_channels_4_5": "accumulate +1 per NCA step at output cells; no inference clipping",
+    "state_between_actions": "persistent; no implicit controller reset"
+  },
+  "controller_to_host": {
+    "raw_score_encoding": "IEEE-754 little-endian binary32, two values",
+    "readout_coordinates_row_col": [[13, 16], [17, 16]],
+    "readout_channel": 0,
+    "action_selection": "raw-score argmax inside controller",
+    "tie_break": "lowest action index, 0",
+    "host_role": "apply returned action to source plant; no desired-action computation"
+  },
+  "reset_and_timing_boundary": {
+    "startup": "explicit plant and controller state provision",
+    "plant_reset": "source random uniform [-0.05,0.05) when invoked with declared RNG",
+    "controller_reset": "explicit new grid; no implied coupling to plant reset",
+    "episode_grid_policy": "unresolved paper-versus-harness discrepancy; G3E",
+    "recovery_reset": "unselected; G3E/later fault protocol",
+    "step_synchronization": "one controller decision then one source plant transition",
+    "wall_clock_deadline": "unselected; 0.02 s is simulated integration time, not proof of a hardware deadline"
+  },
+  "excluded": ["checkpoint_selection", "weights_export", "teacher_oracle_action", "stock_gym_cartpole", "hanoi_interface", "event_gated_variant", "board_bus"]
+}

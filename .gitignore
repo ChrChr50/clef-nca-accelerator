@@ -1,0 +1,96 @@
+# Local/editor state
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+.venv*/
+venv/
+
+# Credentials, vendor licenses, and local environment
+.env
+.env.*
+!.env.example
+*.lic
+license.dat
+credentials.json
+secrets/
+
+# Generated research and document intermediates
+/tmp/
+/self-organized-control/
+*.tmp
+*.bak
+
+# Simulation, synthesis, FPGA, and ASIC outputs
+/artifacts/**
+!/artifacts/README.md
+/build/
+/out/
+/dist/
+*.vcd
+*.fst
+*.wlf
+*.log
+*.rpt
+*.sof
+*.pof
+*.rbf
+*.qdb
+*.qws
+*.smsg
+*.gds
+*.gds2
+*.def
+*.spef
+*.sdf
+
+# Quartus generated state
+db/
+incremental_db/
+output_files/
+.qsys_edit/
+*.qpf.user
+
+# OpenROAD/OpenLane generated state and proprietary technology data
+flow/results/
+flow/logs/
+flow/reports/
+pdks/
+pdk/
+
+# Operating system
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local direct-upstream diagnostic traces; compact summary/report are tracked.
+/experiments/p06_upstream_parity/results/comparisons.jsonl
+/experiments/p06_upstream_parity/smoke/
+/experiments/p07_cartpole/evaluation.json
+
+# Local development records and personal research material
+/AGENTS.md
+/agent_setup/
+/governance/
+/audit/
+/audit_sources.py
+/proposal_drafts/
+/docs/history/
+/docs/status/STAGE_LEDGER.md
+/docs/architecture/*_DOWNSTREAM_PROMPT_AUDIT.md
+/docs/architecture/CARTPOLE_RESUMPTION_AND_EXTENSION_PLAN.md
+/tools/extract_louie.py
+/tools/render_louie_pages.py
+/tools/render_hofmeyr_pages.py
+/tools/render_vega_pages.py
+/tools/render_computability_life.py
+/docs/verification/2026_10_06_SCOPE_MIGRATION.md

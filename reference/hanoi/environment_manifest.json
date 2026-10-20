@@ -1,0 +1,38 @@
+{
+  "actions": [
+    {"destination": 1, "index": 0, "source": 0},
+    {"destination": 2, "index": 1, "source": 0},
+    {"destination": 0, "index": 2, "source": 1},
+    {"destination": 2, "index": 3, "source": 1},
+    {"destination": 0, "index": 4, "source": 2},
+    {"destination": 1, "index": 5, "source": 2}
+  ],
+  "episode": {
+    "action_after_done": "raises EpisodeFinishedError",
+    "move_budget": "caller-supplied positive integer; policy value deferred to G3",
+    "illegal_attempt_consumes_budget": true,
+    "terminal": "all active disks occupy goal_peg",
+    "truncated": "moves_taken >= move_budget and not terminal"
+  },
+  "hash": {"algorithm": "SHA-256", "input": "canonical UTF-8 JSON serialization"},
+  "n_max": 8,
+  "observation": {
+    "goal_indices": [32, 33, 34],
+    "normalized_disk_count_index": 35,
+    "order": "for disk slots 0..7, [peg0, peg1, peg2, present], then goal one-hot, then disk_count/8",
+    "width": 36
+  },
+  "oracle_boundary": {
+    "allowed": ["training", "evaluation", "tests"],
+    "forbidden": ["model_export", "rtl", "boards", "flows", "deployment artifacts"],
+    "tables_committed": false
+  },
+  "reward": null,
+  "reset": {
+    "random_assignment": "SHA-256 counter mapping clef.hanoi.reset.v1:<integer seed>:<disk>, first digest byte modulo 3",
+    "standard_start": "all active disks on caller-selected source peg"
+  },
+  "schema": "clef.hanoi.environment.v1",
+  "state": "tuple of peg locations in smallest-to-largest disk order",
+  "transition": {"illegal_action": "deterministic no-op with legal=false", "masked": false}
+}

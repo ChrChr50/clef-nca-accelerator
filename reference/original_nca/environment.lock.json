@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "canonical_clean_room_environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "platform_independent_contract": "IEEE-754 binary32 arrays; explicit masks and random draws",
+    "lock_file": "requirements/original_nca.lock"
+  },
+  "historical_upstream_environment": {
+    "python": "3.8.1 (notebook metadata; CPython 3.8 bytecode also present)",
+    "keras": "2.2.4-tf (shipped TensorFlow.js model metadata)",
+    "tensorflowjs_converter": "3.7.0 (shipped model metadata)",
+    "tensorflow": null,
+    "gym": null,
+    "numpy": null,
+    "status": "incomplete: notebook installs unversioned packages and records no resolved environment"
+  },
+  "historical_seeds": {
+    "training": null,
+    "paper_evaluation": null,
+    "checkpoint_export": null,
+    "status": "unavailable in paper, notebook, and pinned source"
+  },
+  "reference_test_seeds": {
+    "initial_grid": 1701,
+    "update_masks": 2701,
+    "empirical_episode_seeds": "0 through N-1, recorded per run"
+  }
+}
+

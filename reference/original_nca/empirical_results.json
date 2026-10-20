@@ -1,0 +1,485 @@
+{
+  "comparison_rule": "uncensored 95% confidence interval for reproduced mean must overlap paper mean plus/minus one reported standard deviation",
+  "conditions": {
+    "baseline": {
+      "censored_episodes": 3,
+      "episodes": [
+        {
+          "actions_sha256": "077dd8039aea1344e213f0a8046f26322dd6417a0549d51bd2514b540147b4f9",
+          "reward_sum": 99.24984243196987,
+          "right_censored": true,
+          "seed": 0,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "9614a2a6eeb314fff29a069b4d31d7de5940ced7e1b21af261151684dcd87bb2",
+          "reward_sum": 99.2909777804465,
+          "right_censored": true,
+          "seed": 1,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "c4f692501678fb2a08fe24603071bea272e2c04fdfc36a28850a7b82401b57b1",
+          "reward_sum": 99.96554246667776,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 100.0,
+      "min_steps": 100,
+      "n": 3,
+      "sample_std_steps": 0.0
+    },
+    "damage_after_input": {
+      "censored_episodes": 3,
+      "episodes": [
+        {
+          "actions_sha256": "d06d4e33c3d5e0bb820cd0bc6bf2535b57c8a678f6cdc7d92e98f4efc5ad8273",
+          "reward_sum": 99.13198281262656,
+          "right_censored": true,
+          "seed": 0,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "8e51803459d79259c875075c6f470f572a77f0da805a9ab78edc950940b6541d",
+          "reward_sum": 95.7326629589297,
+          "right_censored": true,
+          "seed": 1,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "06241f92763438313e2482741050beba56383d440efb7abd26a42fe61622aa80",
+          "reward_sum": 99.73558738303656,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 100.0,
+      "min_steps": 100,
+      "n": 3,
+      "sample_std_steps": 0.0
+    },
+    "delete_cart_position": {
+      "censored_episodes": 3,
+      "episodes": [
+        {
+          "actions_sha256": "2c4b2bd64eb0576f75a207e230b4106737b74daae8bf843196fea0f9579a12e8",
+          "reward_sum": 99.88293826972853,
+          "right_censored": true,
+          "seed": 0,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "2fdb369e34d8a15285fe551815ca045e2fe819622cf205afb0eaeb1e03d98052",
+          "reward_sum": 99.22547405749893,
+          "right_censored": true,
+          "seed": 1,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "209a2f771d6ce8cba53b61fee9c924b870812969c08fa53c4d980897630a0119",
+          "reward_sum": 99.874824945296,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 100.0,
+      "min_steps": 100,
+      "n": 3,
+      "sample_std_steps": 0.0
+    },
+    "delete_input_0_with_noise_and_damage": {
+      "censored_episodes": 3,
+      "episodes": [
+        {
+          "actions_sha256": "6a4c48436ac3d86186658a5203fa1653c81cc634e1c49d3de837799d0a9e392b",
+          "reward_sum": 99.39699144545033,
+          "right_censored": true,
+          "seed": 0,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "9db79b2b52f0da66444b47a36fd29a2e72a86a5d028cf4c9bf0f13e272ca0c58",
+          "reward_sum": 98.90025180717771,
+          "right_censored": true,
+          "seed": 1,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "29b0f719e8dd173b2123126ccbc518178e92a5517f0bd8508fe3a75c227d8cc9",
+          "reward_sum": 85.78508860766148,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 100.0,
+      "min_steps": 100,
+      "n": 3,
+      "sample_std_steps": 0.0
+    },
+    "delete_input_1_with_noise_and_damage": {
+      "censored_episodes": 3,
+      "episodes": [
+        {
+          "actions_sha256": "6a4c48436ac3d86186658a5203fa1653c81cc634e1c49d3de837799d0a9e392b",
+          "reward_sum": 99.39699144545033,
+          "right_censored": true,
+          "seed": 0,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "daeec178f1ab2aa653cfc0e086730370c71e8d2daa8a21b2b6540fa4c2e23b12",
+          "reward_sum": 98.68848031593802,
+          "right_censored": true,
+          "seed": 1,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "6356685cc1f421b745e56b2cbb8a69452be1a8499f5fcf9e26aeb9a8e7ea8ba7",
+          "reward_sum": 82.2731889397339,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 100.0,
+      "min_steps": 100,
+      "n": 3,
+      "sample_std_steps": 0.0
+    },
+    "delete_input_2_with_noise_and_damage": {
+      "censored_episodes": 3,
+      "episodes": [
+        {
+          "actions_sha256": "94c8a0f55499df56b6bba9c941f6a0adaa34df1478e8199a41977687b15f2bdf",
+          "reward_sum": 97.12999340699946,
+          "right_censored": true,
+          "seed": 0,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "f0c13cb54ea4b040c96f8ef347e0cf912b596dc1f35e90c231384c7e0d6ea762",
+          "reward_sum": 98.33371389839505,
+          "right_censored": true,
+          "seed": 1,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "b2f2ebf84fca25a67520a43baf35523c5125b3290f9e1a1ebbe433163cefb827",
+          "reward_sum": 95.38618445699919,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 100.0,
+      "min_steps": 100,
+      "n": 3,
+      "sample_std_steps": 0.0
+    },
+    "delete_input_3_with_noise_and_damage": {
+      "censored_episodes": 3,
+      "episodes": [
+        {
+          "actions_sha256": "88793f66a02fba6792c60ba3c8d56eb071cdd05e244c0c1a512f98885d9db74f",
+          "reward_sum": 90.87449617537482,
+          "right_censored": true,
+          "seed": 0,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "78a2dee655d1695b0fc93df4b6ebf10edd0a25435814e8df4b110fd404225501",
+          "reward_sum": 97.14158915799007,
+          "right_censored": true,
+          "seed": 1,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "c2e61a38172daf4653e41669c7cd464b48c0145906ab647cf2e32738988e1916",
+          "reward_sum": 98.70710227154098,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 100.0,
+      "min_steps": 100,
+      "n": 3,
+      "sample_std_steps": 0.0
+    },
+    "delete_input_4_with_noise_and_damage": {
+      "censored_episodes": 3,
+      "episodes": [
+        {
+          "actions_sha256": "6a4c48436ac3d86186658a5203fa1653c81cc634e1c49d3de837799d0a9e392b",
+          "reward_sum": 99.39699144545033,
+          "right_censored": true,
+          "seed": 0,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "9db79b2b52f0da66444b47a36fd29a2e72a86a5d028cf4c9bf0f13e272ca0c58",
+          "reward_sum": 98.90025180717771,
+          "right_censored": true,
+          "seed": 1,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "6356685cc1f421b745e56b2cbb8a69452be1a8499f5fcf9e26aeb9a8e7ea8ba7",
+          "reward_sum": 82.2731889397339,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 100.0,
+      "min_steps": 100,
+      "n": 3,
+      "sample_std_steps": 0.0
+    },
+    "delete_input_5_with_noise_and_damage": {
+      "censored_episodes": 0,
+      "episodes": [
+        {
+          "actions_sha256": "e6c9749301251183fbbaa1f96c58c7a8cd8da66669acb75d24fa676a2834858b",
+          "reward_sum": 46.91915276167922,
+          "right_censored": false,
+          "seed": 0,
+          "steps": 47
+        },
+        {
+          "actions_sha256": "bfcbdcda6043521dfea32d81b2c24f23ad5a9a5f5cc1e6798666d2a0581a34c8",
+          "reward_sum": 27.99914314408073,
+          "right_censored": false,
+          "seed": 1,
+          "steps": 28
+        },
+        {
+          "actions_sha256": "8158ac0332deeef831626397e207906fa099ff2c00839b4a41f3c4327c489eaf",
+          "reward_sum": 28.985480251623734,
+          "right_censored": false,
+          "seed": 2,
+          "steps": 29
+        }
+      ],
+      "max_steps": 47,
+      "mean_steps": 34.666666666666664,
+      "min_steps": 28,
+      "n": 3,
+      "sample_std_steps": 10.692676621563628
+    },
+    "delete_input_6_with_noise_and_damage": {
+      "censored_episodes": 3,
+      "episodes": [
+        {
+          "actions_sha256": "ab14583731d60fc0cd49c83592a961fcf4a389652e9879b8a019b87221de864a",
+          "reward_sum": 94.45782034385853,
+          "right_censored": true,
+          "seed": 0,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "1a99338a4f799b3bf29455335978f40e91c4eb3c396cf53aade3aa6508cc92a7",
+          "reward_sum": 99.7776085720691,
+          "right_censored": true,
+          "seed": 1,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "21b79b85bf61c22113baa32f74f5eadb2ea65ffda51f4d09018a30ed8ef6027c",
+          "reward_sum": 90.3524143704811,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 100.0,
+      "min_steps": 100,
+      "n": 3,
+      "sample_std_steps": 0.0
+    },
+    "delete_input_7_with_noise_and_damage": {
+      "censored_episodes": 1,
+      "episodes": [
+        {
+          "actions_sha256": "94ead353c6659db0325162ca8c0708d3001db39a4349ece2b50f0d371ecf8b34",
+          "reward_sum": 91.18363674413902,
+          "right_censored": false,
+          "seed": 0,
+          "steps": 99
+        },
+        {
+          "actions_sha256": "4144ea0a813f79c79ec4bbeb83119dca19fc45482f276faaeb203c66e9f89c5d",
+          "reward_sum": 69.5726776244979,
+          "right_censored": false,
+          "seed": 1,
+          "steps": 70
+        },
+        {
+          "actions_sha256": "3ae24a1b23b79504e19ad81ead56e2fddcc836ca25e34237de9a70bcc23709ef",
+          "reward_sum": 98.05683005926765,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 89.66666666666667,
+      "min_steps": 70,
+      "n": 3,
+      "sample_std_steps": 17.03917055884274
+    },
+    "noisy_damage_after_input": {
+      "censored_episodes": 3,
+      "episodes": [
+        {
+          "actions_sha256": "6a4c48436ac3d86186658a5203fa1653c81cc634e1c49d3de837799d0a9e392b",
+          "reward_sum": 99.39699144545033,
+          "right_censored": true,
+          "seed": 0,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "daeec178f1ab2aa653cfc0e086730370c71e8d2daa8a21b2b6540fa4c2e23b12",
+          "reward_sum": 98.68848031593802,
+          "right_censored": true,
+          "seed": 1,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "6356685cc1f421b745e56b2cbb8a69452be1a8499f5fcf9e26aeb9a8e7ea8ba7",
+          "reward_sum": 82.2731889397339,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 100.0,
+      "min_steps": 100,
+      "n": 3,
+      "sample_std_steps": 0.0
+    },
+    "noisy_uniform_damage": {
+      "censored_episodes": 3,
+      "episodes": [
+        {
+          "actions_sha256": "bb33bbf30f5dfcc5e2d66c00a0207e716740e0dc3ab176ad48990af66ca54569",
+          "reward_sum": 87.69763829148043,
+          "right_censored": true,
+          "seed": 0,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "69b13edeb4608eb84c6640c48f931b98f9ed036742cbbf5632dff111529215dd",
+          "reward_sum": 96.49677723746113,
+          "right_censored": true,
+          "seed": 1,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "5a0a3a0b7a6c79dc8e074e6b72998b812e8b2902a81ac6b15e5a67b0ec5f74d9",
+          "reward_sum": 99.91022660465019,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 100.0,
+      "min_steps": 100,
+      "n": 3,
+      "sample_std_steps": 0.0
+    },
+    "noisy_update": {
+      "censored_episodes": 3,
+      "episodes": [
+        {
+          "actions_sha256": "d1060198e03fa26b84f10158f2fc7d2f86f1e05dcb4f4ca7a3497c7e640416b2",
+          "reward_sum": 98.46108308224554,
+          "right_censored": true,
+          "seed": 0,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "b508adcdf6dd29f266b932131989c14f7cc23a17951f31751a1612693fb23ac5",
+          "reward_sum": 97.92182864703011,
+          "right_censored": true,
+          "seed": 1,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "217558ef83b597795ac3012de39e6793d6f61d38103f5a22cf239d8cb45f27dc",
+          "reward_sum": 99.47236772788057,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 100.0,
+      "min_steps": 100,
+      "n": 3,
+      "sample_std_steps": 0.0
+    },
+    "uniform_damage": {
+      "censored_episodes": 3,
+      "episodes": [
+        {
+          "actions_sha256": "55b4575430286ebaae76947b51a5b753cd93219869678ec6f26914d8ad8f6501",
+          "reward_sum": 99.45156475709861,
+          "right_censored": true,
+          "seed": 0,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "4a40b2cc6587b411e289303621627b24f67a895ab18ac4dcf5697df938c6cdf5",
+          "reward_sum": 99.45308325272794,
+          "right_censored": true,
+          "seed": 1,
+          "steps": 100
+        },
+        {
+          "actions_sha256": "3424ea74e8bb3671c6408e0034854eeb2728cf252a535d5df71d34595437cf9f",
+          "reward_sum": 99.0561138582666,
+          "right_censored": true,
+          "seed": 2,
+          "steps": 100
+        }
+      ],
+      "max_steps": 100,
+      "mean_steps": 100.0,
+      "min_steps": 100,
+      "n": 3,
+      "sample_std_steps": 0.0
+    }
+  },
+  "conditions_with_censoring": 14,
+  "evaluation_cap_steps": 100,
+  "model": "model1",
+  "qualification": "clean-room empirical attempt; not historical bitwise replay",
+  "runtime": {
+    "dependency_lock": "requirements/original_nca.lock",
+    "numpy": "2.3.5",
+    "python": "3.12.14"
+  },
+  "schema_version": 1,
+  "seeds": [
+    0,
+    1,
+    2
+  ]
+}

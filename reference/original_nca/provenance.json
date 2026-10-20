@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "upstream": {
+    "url": "https://github.com/aVariengien/self-organized-control",
+    "revision": "8c85be11b0838ea14ac51a11dac3098db43afed2",
+    "commit_date": "2022-01-13T12:00:06+01:00",
+    "local_path": "self-organized-control",
+    "local_path_tracked": false
+  },
+  "paper": {
+    "path": "C:/Users/skywa/Downloads/61ca692887a9d30768d4a354_IMI_2021_01.pdf",
+    "sha256": "85d101822d2dd81fd7a2152e88f74ddce4f93ebad8159f7ffaeaf053f5375c37",
+    "title": "Towards Self-organized Control: Using Neural Cellular Automata to Robustly Control a Cart-pole Agent",
+    "published": "2021-12-10"
+  },
+  "license": {
+    "setup_py_declaration": "MIT",
+    "repository_license_file": null,
+    "copyright_notice": null,
+    "redistribution_policy": "do not vendor upstream source or checkpoint bytes pending provenance review"
+  },
+  "artifacts": [
+    {"path":"README.md","bytes":1499,"sha256":"c42a80ef86da18d65a330cf6451c1ea986383441d257927a4c9cdf2015d0bbeb"},
+    {"path":"code/setup.py","bytes":350,"sha256":"229549b395db92dbacd4339c463adc84fe59f761cab0433ed0a457658f284f97"},
+    {"path":"code/SelfOrgControl/NeuralCA.py","bytes":53772,"sha256":"c929113519db9b1852adddb5597052b8569d206f8ee553817ba10a47e7f550b3"},
+    {"path":"code/SelfOrgControl/NCA_DQN.py","bytes":13649,"sha256":"68bd00a8d820b86ff3ae412e8132bef84f7248e043ebb4e7cbd904ec8ab36172"},
+    {"path":"code/SelfOrgControl/CustomCartPoleEnv.py","bytes":17837,"sha256":"a69a570acc5e74074a773f3f3c21330a1b2ee697f9a8419f544204d45f49da98"},
+    {"path":"code/Towards-self-organized-control-notebook.ipynb","bytes":16262,"sha256":"bc5f94c0073396773f114cb7dc856443457e2229bff3f10195d7c573dbbc6e14"},
+    {"path":"code/PretrainedModels.zip","bytes":23847,"sha256":"d2e2f60b04c36652ca27966843ffafdd2ed6835d4a9be305708d0149df597ff1"},
+    {"path":"demo/models/model1/model.json","bytes":2433,"sha256":"8a643a7c5d81500bd557202071ecbe284e879118888525bc402311f443c3daee"},
+    {"path":"demo/models/model1/group1-shard1of1.bin","bytes":7664,"sha256":"3f7d6a7b06c731c7b058ce461eabd23dbf9a5d92be55738e73c0093bc62e5074"},
+    {"path":"demo/models/model2/model.json","bytes":2433,"sha256":"8a643a7c5d81500bd557202071ecbe284e879118888525bc402311f443c3daee"},
+    {"path":"demo/models/model2/group1-shard1of1.bin","bytes":7664,"sha256":"ee8e4ad597d73dc616e60e91a5af056c96beb9f2c18652cfb1a1906247fbc009"},
+    {"path":"demo/models/model3/model.json","bytes":2433,"sha256":"8a643a7c5d81500bd557202071ecbe284e879118888525bc402311f443c3daee"},
+    {"path":"demo/models/model3/group1-shard1of1.bin","bytes":7664,"sha256":"2340f2eefc81164009ada62d7660b0378bd4bf48f548326e961bb7860d223f3b"}
+  ]
+}
+

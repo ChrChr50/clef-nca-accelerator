@@ -1,0 +1,27 @@
+{
+  "arbitrary_iterations": 320,
+  "auxiliary_schema": "clef.p05.hypothesis-a.auxiliary.v1",
+  "batch_size": 8,
+  "dagger_iterations": 80,
+  "evaluation_max_n": 8,
+  "fire_rate": 0.5,
+  "graph_parameter_count": 1916,
+  "output": "experiments\\p05_hypothesis_a",
+  "overflow_weight": 0.01,
+  "probe_epochs": 100,
+  "resume": null,
+  "schedule": {
+    "long": [
+      50,
+      59
+    ],
+    "long_every": 4,
+    "short": [
+      20,
+      24
+    ]
+  },
+  "seed": 205,
+  "soak_moves": 510,
+  "standard_iterations": 160
+}

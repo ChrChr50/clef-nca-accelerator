@@ -1,0 +1,553 @@
+{
+  "acceptance_adr": "docs/decisions/ADR-0012-cartpole-fixed-point-numerical-contract.md",
+  "accepted_date": "2026-10-07",
+  "arithmetic": {
+    "accumulation_order": "kernel row, column, channel; bias last",
+    "accumulator_bits": 62,
+    "activation_format": "state format",
+    "bias_fraction": 46,
+    "fan_ins": [
+      54,
+      20,
+      30
+    ],
+    "name": "fidelity32",
+    "overflow": "signed saturation",
+    "post_write_order": "residual; clears; markers; scaled observation scatter",
+    "quantization_boundary": "unscaled E01 float32 observations; source float32 scaling once",
+    "relu": "after bias, before requantization",
+    "residual": "guard-bit sum then state saturation",
+    "rounding": "nearest-ties-even",
+    "schedule": "old-grid reads, full new-grid commit each supplied logical epoch",
+    "state_bits": 32,
+    "state_fraction": 24,
+    "tie": "lowest action index",
+    "weight_bits": 24,
+    "weight_fraction": 22
+  },
+  "bound_artifacts": {
+    "docs/decisions/ADR-0012-cartpole-fixed-point-numerical-contract.md": "9b6b8e66b049c3ae0a2147ce5cc6d8dcb8d02971b47626a708fbf7e1a7d14888",
+    "experiments/p07_cartpole/evaluation_summary.json": "99eb4ec5ebfac7630ca9227aa550b1020bb557dc3f3672e302c42358ffc15025",
+    "experiments/p07_cartpole/float_profile.json": "c9113f3ec63237d7aec7bbdfc5c1cdc802f91e0a850d465d85e225f53df93cde",
+    "experiments/p07_cartpole/protocol.v1.json": "28a809e6955fc224630ea3dc057d1c7599068764d44843c3c74e7db7173736bf",
+    "experiments/p07_cartpole/vectors_manifest.json": "cd8ed555d3bb6b39702439c89634bc282b15a0cb7d39b580260ef8b105a680e2",
+    "model_export/cartpole/accepted_arithmetic.py": "f7db06db1aec6def6aea13f55d47e31f5e05a2f9dc0807199c3d45fc1df427fa",
+    "model_export/cartpole/fixed_deployment.py": "c6691858fdb57c08d76b6a588f7d742c41b782f4d8c4c6a1db0a82a7b134700c",
+    "model_export/cartpole/fixed_point.py": "2ea867989973390d38dc772ba9679d303c6cec352d9c43be919e25b8ca5b082a",
+    "sw/cartpole/deployment.freeze.v1.json": "d1d6c1b498ee46afa8b96df07b5ee28e89f240a8f3910b0b9c8cbb97a49cc88e"
+  },
+  "next_stage": "P08 requires a separate explicit user request; not authorized by G4 acceptance",
+  "quality": {
+    "acceptable_full_horizon_control_loss": "not selected; measure and explicitly decide later",
+    "evidence_scope": "reused 10/12 calibration at 128 actions; new 20/21 at 256 actions, all censored",
+    "float_action_agreement": "all four measured bounded traces identical",
+    "full_horizon_quantized_qualified": false,
+    "rtl_comparison": "exact signed integer equality at layer/cell/epoch/readout boundaries",
+    "saturation": "defined signed saturation; all events counted; zero observed in bounded primary runs",
+    "wrap": "forbidden; full-valid-state accumulator bounds prove host MAC safety"
+  },
+  "rights": "checkpoint-derived arrays remain ignored/local; manifest includes hashes and aggregate metrics only",
+  "schema_version": 1,
+  "status": "accepted-G4-fidelity32",
+  "verification_vectors": [
+    {
+      "bytes": 648744,
+      "errors": {
+        "layer0_output": {
+          "max_abs_error": 2.086162567138672e-07,
+          "max_error_coordinate": [
+            0,
+            11,
+            23,
+            3
+          ],
+          "rmse": 3.635065161805774e-08
+        },
+        "layer1_output": {
+          "max_abs_error": 2.980232238769531e-07,
+          "max_error_coordinate": [
+            0,
+            13,
+            24,
+            12
+          ],
+          "rmse": 4.45356994998727e-08
+        },
+        "layer2_output": {
+          "max_abs_error": 3.2782554626464844e-07,
+          "max_error_coordinate": [
+            0,
+            7,
+            11,
+            4
+          ],
+          "rmse": 7.2652230658248e-08
+        },
+        "post_write_epoch": {
+          "max_abs_error": 3.2782554626464844e-07,
+          "max_error_coordinate": [
+            0,
+            7,
+            11,
+            4
+          ],
+          "rmse": 5.298668645004877e-08
+        }
+      },
+      "first_quantized_float_difference": {
+        "absolute_lsb_difference": 1,
+        "boundary": "layer0_output",
+        "coordinate": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "format": "fidelity32",
+      "persistent_epochs_saved": [
+        1,
+        2,
+        59
+      ],
+      "restricted_vector_path": "artifacts/p07_cartpole/vectors/fidelity32_action_1_epoch_1.npz",
+      "saturation_counts": {
+        "accumulator0": 0,
+        "accumulator1": 0,
+        "accumulator2": 0,
+        "bias0": 0,
+        "bias1": 0,
+        "bias2": 0,
+        "initial_grid": 0,
+        "layer0": 0,
+        "layer1": 0,
+        "layer2": 0,
+        "observation": 0,
+        "output_marker": 0,
+        "residual": 0,
+        "weight0": 0,
+        "weight1": 0,
+        "weight2": 0
+      },
+      "scalar_cells_verified": 8,
+      "sha256": "d6a934e4f4d3e2a6a2b4b45ee999e8cffc4bff4e66f2156c768f3fc0098ef5b4",
+      "source_snapshot": "artifacts/p07_cartpole/float_profile/action_1_epoch_1.npz"
+    },
+    {
+      "bytes": 642056,
+      "errors": {
+        "layer0_output": {
+          "max_abs_error": 1.0132789611816406e-06,
+          "max_error_coordinate": [
+            0,
+            14,
+            16,
+            8
+          ],
+          "rmse": 1.396499766187817e-07
+        },
+        "layer1_output": {
+          "max_abs_error": 1.430511474609375e-06,
+          "max_error_coordinate": [
+            0,
+            16,
+            16,
+            23
+          ],
+          "rmse": 1.216843461908693e-07
+        },
+        "layer2_output": {
+          "max_abs_error": 1.1324882507324219e-06,
+          "max_error_coordinate": [
+            0,
+            17,
+            16,
+            4
+          ],
+          "rmse": 1.5386591045891872e-07
+        },
+        "post_write_epoch": {
+          "max_abs_error": 1.1324882507324219e-06,
+          "max_error_coordinate": [
+            0,
+            17,
+            16,
+            4
+          ],
+          "rmse": 1.1051378929486693e-07
+        }
+      },
+      "first_quantized_float_difference": {
+        "absolute_lsb_difference": 1,
+        "boundary": "layer0_output",
+        "coordinate": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "format": "fidelity32",
+      "persistent_epochs_saved": [
+        1,
+        2,
+        59
+      ],
+      "restricted_vector_path": "artifacts/p07_cartpole/vectors/fidelity32_action_10_epoch_1.npz",
+      "saturation_counts": {
+        "accumulator0": 0,
+        "accumulator1": 0,
+        "accumulator2": 0,
+        "bias0": 0,
+        "bias1": 0,
+        "bias2": 0,
+        "initial_grid": 0,
+        "layer0": 0,
+        "layer1": 0,
+        "layer2": 0,
+        "observation": 0,
+        "output_marker": 0,
+        "residual": 0,
+        "weight0": 0,
+        "weight1": 0,
+        "weight2": 0
+      },
+      "scalar_cells_verified": 8,
+      "sha256": "1ef88038389cdc4e522110feec7be3274a4cfdd68267f9ac36ffd0a0df54962c",
+      "source_snapshot": "artifacts/p07_cartpole/float_profile/action_10_epoch_1.npz"
+    },
+    {
+      "bytes": 642302,
+      "errors": {
+        "layer0_output": {
+          "max_abs_error": 1.1324882507324219e-06,
+          "max_error_coordinate": [
+            0,
+            12,
+            16,
+            8
+          ],
+          "rmse": 1.4132643893424857e-07
+        },
+        "layer1_output": {
+          "max_abs_error": 1.2814998626708984e-06,
+          "max_error_coordinate": [
+            0,
+            11,
+            25,
+            1
+          ],
+          "rmse": 1.2349205085445552e-07
+        },
+        "layer2_output": {
+          "max_abs_error": 1.1026859283447266e-06,
+          "max_error_coordinate": [
+            0,
+            13,
+            18,
+            4
+          ],
+          "rmse": 1.5873555209980424e-07
+        },
+        "post_write_epoch": {
+          "max_abs_error": 1.0728836059570312e-06,
+          "max_error_coordinate": [
+            0,
+            12,
+            17,
+            5
+          ],
+          "rmse": 1.0851072583739413e-07
+        }
+      },
+      "first_quantized_float_difference": {
+        "absolute_lsb_difference": 1,
+        "boundary": "layer0_output",
+        "coordinate": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "format": "fidelity32",
+      "persistent_epochs_saved": [
+        1,
+        2,
+        59
+      ],
+      "restricted_vector_path": "artifacts/p07_cartpole/vectors/fidelity32_action_100_epoch_1.npz",
+      "saturation_counts": {
+        "accumulator0": 0,
+        "accumulator1": 0,
+        "accumulator2": 0,
+        "bias0": 0,
+        "bias1": 0,
+        "bias2": 0,
+        "initial_grid": 0,
+        "layer0": 0,
+        "layer1": 0,
+        "layer2": 0,
+        "observation": 0,
+        "output_marker": 0,
+        "residual": 0,
+        "weight0": 0,
+        "weight1": 0,
+        "weight2": 0
+      },
+      "scalar_cells_verified": 8,
+      "sha256": "ea2c365b5b6a072b76522bc65f3fc975c16b31eafbdf180df2db78d8a96922cb",
+      "source_snapshot": "artifacts/p07_cartpole/float_profile/action_100_epoch_1.npz"
+    },
+    {
+      "bytes": 641744,
+      "errors": {
+        "layer0_output": {
+          "max_abs_error": 1.1324882507324219e-06,
+          "max_error_coordinate": [
+            0,
+            12,
+            16,
+            8
+          ],
+          "rmse": 1.3839737951435408e-07
+        },
+        "layer1_output": {
+          "max_abs_error": 1.2814998626708984e-06,
+          "max_error_coordinate": [
+            0,
+            18,
+            17,
+            5
+          ],
+          "rmse": 1.2253449243515086e-07
+        },
+        "layer2_output": {
+          "max_abs_error": 1.5366822481155396e-06,
+          "max_error_coordinate": [
+            0,
+            16,
+            17,
+            5
+          ],
+          "rmse": 1.5769125133846438e-07
+        },
+        "post_write_epoch": {
+          "max_abs_error": 1.0132789611816406e-06,
+          "max_error_coordinate": [
+            0,
+            18,
+            16,
+            5
+          ],
+          "rmse": 1.0912377767581625e-07
+        }
+      },
+      "first_quantized_float_difference": {
+        "absolute_lsb_difference": 1,
+        "boundary": "layer0_output",
+        "coordinate": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "format": "fidelity32",
+      "persistent_epochs_saved": [
+        1,
+        2,
+        59
+      ],
+      "restricted_vector_path": "artifacts/p07_cartpole/vectors/fidelity32_action_1000_epoch_1.npz",
+      "saturation_counts": {
+        "accumulator0": 0,
+        "accumulator1": 0,
+        "accumulator2": 0,
+        "bias0": 0,
+        "bias1": 0,
+        "bias2": 0,
+        "initial_grid": 0,
+        "layer0": 0,
+        "layer1": 0,
+        "layer2": 0,
+        "observation": 0,
+        "output_marker": 0,
+        "residual": 0,
+        "weight0": 0,
+        "weight1": 0,
+        "weight2": 0
+      },
+      "scalar_cells_verified": 8,
+      "sha256": "bb75754261ba140900d2e24f9a4b5733002245447566712658fe22edd7daa718",
+      "source_snapshot": "artifacts/p07_cartpole/float_profile/action_1000_epoch_1.npz"
+    },
+    {
+      "bytes": 644946,
+      "errors": {
+        "layer0_output": {
+          "max_abs_error": 1.2516975402832031e-06,
+          "max_error_coordinate": [
+            0,
+            13,
+            25,
+            9
+          ],
+          "rmse": 1.5449395419246447e-07
+        },
+        "layer1_output": {
+          "max_abs_error": 1.430511474609375e-06,
+          "max_error_coordinate": [
+            0,
+            12,
+            26,
+            28
+          ],
+          "rmse": 1.3824666397008188e-07
+        },
+        "layer2_output": {
+          "max_abs_error": 1.4137476682662964e-06,
+          "max_error_coordinate": [
+            0,
+            27,
+            23,
+            5
+          ],
+          "rmse": 1.7705764022745438e-07
+        },
+        "post_write_epoch": {
+          "max_abs_error": 1.3336539268493652e-06,
+          "max_error_coordinate": [
+            0,
+            31,
+            27,
+            5
+          ],
+          "rmse": 1.2216318157385627e-07
+        }
+      },
+      "first_quantized_float_difference": {
+        "absolute_lsb_difference": 1,
+        "boundary": "layer0_output",
+        "coordinate": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "format": "fidelity32",
+      "persistent_epochs_saved": [
+        1,
+        2,
+        59
+      ],
+      "restricted_vector_path": "artifacts/p07_cartpole/vectors/fidelity32_action_5000_epoch_1.npz",
+      "saturation_counts": {
+        "accumulator0": 0,
+        "accumulator1": 0,
+        "accumulator2": 0,
+        "bias0": 0,
+        "bias1": 0,
+        "bias2": 0,
+        "initial_grid": 0,
+        "layer0": 0,
+        "layer1": 0,
+        "layer2": 0,
+        "observation": 0,
+        "output_marker": 0,
+        "residual": 0,
+        "weight0": 0,
+        "weight1": 0,
+        "weight2": 0
+      },
+      "scalar_cells_verified": 8,
+      "sha256": "37f675aa50de1a7c25dafd3cb583d0d349875528809b7a226ca853997d938446",
+      "source_snapshot": "artifacts/p07_cartpole/float_profile/action_5000_epoch_1.npz"
+    },
+    {
+      "bytes": 644227,
+      "errors": {
+        "layer0_output": {
+          "max_abs_error": 1.1324882507324219e-06,
+          "max_error_coordinate": [
+            0,
+            12,
+            16,
+            8
+          ],
+          "rmse": 1.495384766309859e-07
+        },
+        "layer1_output": {
+          "max_abs_error": 1.1920928955078125e-06,
+          "max_error_coordinate": [
+            0,
+            14,
+            16,
+            12
+          ],
+          "rmse": 1.3000332101047079e-07
+        },
+        "layer2_output": {
+          "max_abs_error": 1.1771917343139648e-06,
+          "max_error_coordinate": [
+            0,
+            12,
+            26,
+            4
+          ],
+          "rmse": 1.7078899951419522e-07
+        },
+        "post_write_epoch": {
+          "max_abs_error": 1.1920928955078125e-06,
+          "max_error_coordinate": [
+            0,
+            17,
+            28,
+            5
+          ],
+          "rmse": 1.167034414736814e-07
+        }
+      },
+      "first_quantized_float_difference": {
+        "absolute_lsb_difference": 1,
+        "boundary": "layer0_output",
+        "coordinate": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "format": "fidelity32",
+      "persistent_epochs_saved": [
+        1,
+        2,
+        59
+      ],
+      "restricted_vector_path": "artifacts/p07_cartpole/vectors/fidelity32_action_10000_epoch_1.npz",
+      "saturation_counts": {
+        "accumulator0": 0,
+        "accumulator1": 0,
+        "accumulator2": 0,
+        "bias0": 0,
+        "bias1": 0,
+        "bias2": 0,
+        "initial_grid": 0,
+        "layer0": 0,
+        "layer1": 0,
+        "layer2": 0,
+        "observation": 0,
+        "output_marker": 0,
+        "residual": 0,
+        "weight0": 0,
+        "weight1": 0,
+        "weight2": 0
+      },
+      "scalar_cells_verified": 8,
+      "sha256": "1fac982323f5f890771d30891690ec53a678918ceaeca9043d03a9a0c0e5969d",
+      "source_snapshot": "artifacts/p07_cartpole/float_profile/action_10000_epoch_1.npz"
+    }
+  ],
+  "weights_sha256": "ee8e4ad597d73dc616e60e91a5af056c96beb9f2c18652cfb1a1906247fbc009"
+}
