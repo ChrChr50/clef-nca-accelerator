@@ -10,8 +10,8 @@ measurements remain in the verification reports and experiment results.
 | CartPole deployment (E00–E02) | Complete | `sw/cartpole/` interface/replay and host/controller tests |
 | Model2 qualification/freeze (P06) | Model frozen by ADR-0011 despite failed original qualification | 6/10 horizon completions versus original 8/10 condition; evidence unchanged |
 | Integer golden (P07) | fidelity32 accepted by ADR-0012 | Bounded integer/float comparisons; full-horizon fixed quality unverified |
-| Portable primitives (P08) | Implemented; HDL verification pending | Synthetic Python/vector checks and generated benches; no recorded RTL simulation/synthesis pass |
-| Folded local-rule engine (P09) | Implemented; HDL/synthesis verification pending | Cell-delta engine, scalar/image comparisons and lane alternatives |
+| Portable primitives (P08) | Implemented; synthetic HDL CI passes | Checkpoint-derived HDL signoff and synthesis pending |
+| Folded local-rule engine (P09) | Implemented; synthetic HDL CI passes | Cell-delta engine and lane alternatives; checkpoint-derived HDL/synthesis evidence pending |
 | Grid memory/scheduler and integrated core (P10–P12) | Not implemented | G5 architecture choice unaccepted; no complete controller RTL |
 | Board integration/demonstration (P13/P14) | Not implemented | No measured fit, Fmax, power or closed-loop FPGA result |
 | ASIC and further embodied/Clef extensions | Later research | Separate evidence and design decisions required |
@@ -36,6 +36,10 @@ establish full-horizon fixed-point reliability, board competence or a hardware
 performance advantage. Python comparisons and generated HDL benches do not
 establish an RTL simulation pass. Passing synthetic cases does not establish
 checkpoint-dependent hardware signoff.
+
+The newer [source-distribution checks](verification/SOURCE_DISTRIBUTION_CHECKS.md)
+record successful synthetic Icarus execution in hosted CI. This does not mark
+all original P08/P09 acceptance requirements complete.
 
 Technical requirements are mapped in
 [requirements traceability](requirements/REQUIREMENTS_TRACEABILITY.md).

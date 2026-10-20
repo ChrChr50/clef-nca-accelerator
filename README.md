@@ -20,7 +20,8 @@ left/right force. Controller state persists between actions.
 - **fidelity32** is the accepted integer arithmetic: signed state 32/F24,
   kernels 24/F22 and accumulators/bias 62/F46, ties-to-even rounding and saturation.
 - Portable arithmetic primitives and a folded local-rule RTL engine exist.
-  Recorded HDL simulation/synthesis verification is pending. There is no complete
+  Synthetic Icarus verification now passes in CI; checkpoint-dependent HDL
+  signoff and synthesis remain pending. There is no complete
   grid scheduler, integrated FPGA controller, measured board fit or hardware demo.
 - The initial board target is the DE1-SoC. ASIC work and further embodied-control
   benchmarks remain later work. This fixed controller does not establish
@@ -30,6 +31,8 @@ See [implementation status](docs/STATUS.md),
 [architecture](docs/architecture/EMBODIED_NCA_VISION.md),
 [local-rule explanation](docs/architecture/NCA_LOCAL_RULE_TEACHING_MAP.md), and
 [design decisions](docs/decisions/README.md).
+See [source-distribution checks](docs/verification/SOURCE_DISTRIBUTION_CHECKS.md)
+for the behavior-preservation comparison and hosted synthetic HDL result.
 
 ## Repository map
 
