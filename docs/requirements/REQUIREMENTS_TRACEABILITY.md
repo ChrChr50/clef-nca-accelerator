@@ -4,6 +4,28 @@ This matrix maps governing requirements to implementation artifacts and observed
 
 Scope precedence (2026-10-07): accepted ADR-0008 selects reference-paper CartPole first, with custom surface/EvoGym test extensions after the verified FPGA baseline. The active vision and resumption plan supersede earlier distributed-plant-first requirements. P00–P05 tables retain dated historical evidence; Hanoi requirements are not current deployment requirements. Original P03 evidence is reused with its limits, not relabeled as FPGA verification.
 
+## Row-pipeline continuation — 2026-10-28
+
+ADR-0015 records the user's accepted direction and reference-faithful corrections. Imported specification revision 1.0 is preserved; the reconciliation report identifies necessary corrections. Numerical acceptance and hardware evidence remain distinct.
+
+| ID | Requirement | Artifact/evidence | Status |
+|---|---|---|---|
+| ROW-001 | Preserve post-update observation injection, mandatory postwrites on zero masks, output channels 4/5 increments and lowest-index ties. | Immutable original operator; ADR-0015; candidate regressions; 2026-10-30 full-grid epoch HDL replay | Postwrites verified in epoch RTL; action-controller integer tie/readout implementation remains pending |
+| ROW-002 | Validate 16/F10 state, 16/F12 kernels and 48/F22 accumulators before replacing accepted fidelity32. | Protocol; screen/gate summaries; candidate bounds; proposed ADR-0016 | At G4: seed-41 candidate fails at 1150 versus comparators alive at 1488; replacement unaccepted |
+| ROW-003 | Exact independent scalar/vector equality, output-major ROM round-trip, signed extrema, saturation and bounds. | Seven candidate tests; six complete checkpoint cases, 48 independent scalar cells, exact persistent replay and ignored signed ROMs | Verified for measured candidate operators/layout; not policy acceptance |
+| ROW-004 | Predeclared paired recurrent comparison with seeds, masks, persistent grids, failures/censoring and resumable state. | Four completed screens; deliberately incomplete long campaign at G4; resume equivalence unit test; safe gate summary | Verified as executed/reported; full-horizon campaign incomplete |
+| ROW-005 | Row lockstep, correct stage-register ownership, one grid, safe old-row release and stall-independent logical draws. | Eight row-stage HDL configurations; both banked widths; ADR-0017; `nca_epoch_core.sv` and 18 persistent epoch replays | Functional generation safety/barriers and progress verified under tested stalls with supplied masks; autonomous draw generator and physical mapping pending |
+| ROW-006 | Measure actual RAM/DSP mapping, ports, recurrence timing and end-to-end protocol rather than treating projections as results. | ADR-0015; future P09/P10/P13 evidence | Recorded |
+| ROW-007 | Diagnose the saved numerical failure with reproducible bounded replay and causal probes; distinguish logical precision cost from physical synthesis. | `ROW16_DIAGNOSIS_AND_PRECISION_COST.md`; seed41 first-divergence, input/history probes and exact recorded-action/terminal-grid replay; `hardware_tradeoff.json` | Diagnostic evidence obtained; no new numerical acceptance, population qualification or physical mapping |
+| ROW-008 | Match transcript operand delivery: shared old rows, shared offset/channel decode, scalar-per-lane input and common convolution coefficient stream; distinguish logical sharing from physical ROM mapping. | `nca_row_window.sv`; streamed row-stage branch; exhaustive window tests and `ROW_PIPELINE_EPOCH_RTL_2026_10_30.md` | Three-row/shared-decode frontend and explicit coefficient broadcasts functionally verified; physical ROM mapping unverified |
+| ROW-009 | Measure row request interval separately from active cycles and preserve old-generation reads through write grants/snapshots. | Component 1080 active / 1081 request interval; guarded single-grid scheduler; 43,326 clocks per epoch under fixed test stalls | Integrated old-generation safety, all row commits, transfer counts and tested progress verified; no unstalled/Fmax/board throughput claim |
+| ROW-010 | Connect row stages with actual overlap, exact mask MAC gating and mandatory source postwrites while preserving accepted arithmetic. | Six full-grid configurations, 18 epochs; 110,592 grid and 1,032,192 layer comparisons; local hash-bound reports; proposed ADR-0018/G5 | Verified for tested functional scope; fidelity32 remains accepted, row16 quality loss unresolved; full action/RNG/transport controller and physical G5 evidence pending |
+| ROW-011 | Remove unused production RTL and improve active-source readability without changing behavior or losing historical regression evidence. | Five-file `rtl/core/files.f`; six byte-preserved fixtures in `tb/legacy_rtl/`; 165 identifier renames; 7,175-token check; `RTL_CLEANUP_2026_10_30.md`; fresh 18-epoch matrix and 105 Python regressions | Verified: active RTL comment-free, public interfaces unchanged, all 150 golden/input files unchanged, historical tests runnable; G5 status unchanged |
+
+No existing verified requirement is widened to the new numerical or row-pipeline implementation without new evidence. Historical Hanoi, original-reference and existing accepted numerical results are preserved.
+
+2026-10-28 verification addendum: existing P08/P09 synthetic **and restricted** HDL entry points passed locally with Icarus. This advances the existing arithmetic requirements' HDL scope; it does not establish synthesis, full controller or board signoff. See the row-pipeline G4 packet for exact commands, 105 passing unit tests, source identities and limitations. New CI commands were added but not dispatched.
+
 ## Status vocabulary
 
 | Status | Meaning |

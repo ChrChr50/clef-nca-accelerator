@@ -1,0 +1,73 @@
+{
+  "cases": [
+    {
+      "action": 0,
+      "coarse_inputs": [],
+      "scores": [
+        0.21282178163528442,
+        0.2119075059890747
+      ]
+    },
+    {
+      "action": 0,
+      "coarse_inputs": [
+        "cart_position"
+      ],
+      "scores": [
+        0.21281921863555908,
+        0.21189957857131958
+      ]
+    },
+    {
+      "action": 0,
+      "coarse_inputs": [
+        "cart_velocity"
+      ],
+      "scores": [
+        0.21319103240966797,
+        0.2125105857849121
+      ]
+    },
+    {
+      "action": 0,
+      "coarse_inputs": [
+        "pole_angle"
+      ],
+      "scores": [
+        0.21292740106582642,
+        0.21238231658935547
+      ]
+    },
+    {
+      "action": 0,
+      "coarse_inputs": [
+        "pole_angular_velocity"
+      ],
+      "scores": [
+        0.21315664052963257,
+        0.2126339077949524
+      ]
+    },
+    {
+      "action": 1,
+      "coarse_inputs": [
+        "cart_position",
+        "cart_velocity",
+        "pole_angle",
+        "pole_angular_velocity"
+      ],
+      "scores": [
+        0.2136252522468567,
+        0.21369463205337524
+      ]
+    }
+  ],
+  "physical_input_quantum_approx": {
+    "cart_position": 0.00048828125,
+    "cart_velocity": 0.00390625,
+    "pole_angle": 0.000244140625,
+    "pole_angular_velocity": 0.006510416407965962
+  },
+  "scope": "seed41/action101 only; same float starting grid; one-decision input sensitivity, not policy qualification",
+  "start_sha256": "897d6c818742087dccdf5daf4132bec135db6024a5c005f9e2870827652f6921"
+}

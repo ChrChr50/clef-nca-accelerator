@@ -20,8 +20,9 @@ from model_export.cartpole.freeze import load_frozen, sha256
 from model_export.cartpole.fixed_point import FixedNCA, round_shift, scalar_cell_delta
 from model_export.cartpole.test_fixed_point import fixture
 
-SOURCES = [ROOT/'rtl/core'/f'nca_{name}.sv' for name in
-           ('round_sat','guard_add','word_pack','event_counter','elastic_word','mac_stream')]
+SOURCES = [ROOT/'rtl/core/nca_round_sat.sv'] + [
+    ROOT/'tb/legacy_rtl'/f'nca_{name}.sv' for name in
+    ('guard_add','word_pack','event_counter','elastic_word','mac_stream')]
 
 
 def clipped(value, width):

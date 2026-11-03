@@ -29,7 +29,11 @@ Do not use an ADR to turn a speculative mechanism or scientific claim into an es
 | ADR-0010 | Response to failed model2 full-horizon qualification | Proposed; unaccepted | G3E return | P06 |
 | ADR-0011 | Freeze released model2 despite preserved qualification limitation | Accepted by explicit user decision; supersedes pre-freeze gate only | G3E resolved | P06/P07 prerequisite |
 | ADR-0012 | CartPole fixed-point numerical and quality contract | Accepted fidelity32; bounded quality scope | G4 complete | P07 |
-| ADR-0013 | Portable P08 primitive seams and transaction diagnostics | Proposed implementation record; HDL verification pending | None; does not select G5 | P08 |
-| ADR-0014 | Folded P09 local-rule compute alternatives | Proposed; HDL/synthesis evidence pending | G5 compute portion; final choice deferred to P10 | P09 |
+| ADR-0013 | Portable P08 primitive seams and transaction diagnostics | Proposed implementation record; synthetic/restricted HDL pass locally; synthesis unrun | None; does not select G5 | P08 |
+| ADR-0014 | Folded P09 local-rule compute alternatives | Proposed; synthetic/restricted HDL pass locally; synthesis pending | G5 compute portion; row direction via ADR-0015; final signoff pending | P09 |
+| ADR-0015 | Row-pipeline direction, delegated hardware choices and source corrections | Accepted for implementation direction/validation; no numerical replacement or G5 signoff | P07 extension, then G5/G6 evidence | P07–P14 continuation |
+| ADR-0016 | Response to measured row16 control degradation | Proposed; unaccepted; continuation stopped | G4 return | P07 numerical extension |
+| ADR-0017 | Implement width-independent shared-row pipeline | Accepted implementation scope; fidelity32 default, row16 numerical gate unchanged | Stop at G5 | P09/P10 functional architecture |
+| ADR-0018 | Row-pipeline physical disposition and integration boundaries | Proposed; synthesis/inference and final physical choices pending | G5 unaccepted | P10 |
 
 ADR-0004/0005 remain records of historical experimental authorization, not acceptance of the new benchmark or model. See the active vision and implementation status for current readiness.

@@ -1,5 +1,12 @@
 # From the Python CartPole NCA to `nca_local_rule.sv`
 
+2026-10-30 location update: this is a historical explanation of the earlier
+folded engine. Its unchanged source now lives at `tb/legacy_rtl/nca_local_rule.sv`;
+the five other retired primitives listed below also moved into `tb/legacy_rtl/`.
+The current accelerator uses the row pipeline documented in
+`docs/architecture/ROW_PIPELINE_EPOCH_CORE.md`. Historical line-by-line text below
+is preserved; the active `nca_round_sat.sv` has subsequently been renamed internally.
+
 This is an explanation of the inspected 133-line source in
 `rtl/core/nca_local_rule.sv`, as read on 2026-10-08. It does not change the RTL.
 Line numbers refer to that source, not this document. Read the two side by side.

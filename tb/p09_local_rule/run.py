@@ -135,7 +135,7 @@ def main():
     folder=ROOT/'artifacts/p09_local_rule'/('restricted' if args.restricted else 'synthetic')
     images=write_images(model,folder)
     bench=folder/'tb.sv';bench.write_text(generate(cases))
-    sources=[ROOT/'rtl/core/nca_round_sat.sv',ROOT/'rtl/core/nca_local_rule.sv']
+    sources=[ROOT/'rtl/core/nca_round_sat.sv',ROOT/'tb/legacy_rtl/nca_local_rule.sv']
     report={'schema_version':1,'arithmetic':model.fmt.manifest(),'python':sys.version,
             'cases':len(cases),'layer_output_comparisons':len(cases)*56,
             'images':images,'bounds':model.bounds,'accepted_vectors':bindings,

@@ -1,15 +1,30 @@
 # Portable SystemVerilog core
 
-Technology-independent SystemVerilog primitives for accepted fidelity32 now
-live here. `nca_round_sat`, `nca_guard_add`, `nca_mac_stream`, `nca_word_pack`,
-`nca_event_counter` and `nca_elastic_word` are P08 foundations, not a complete
-NCA engine. See `docs/architecture/P08_PRIMITIVE_INTERFACES.md` and
-`tb/p08_primitives/`. Quartus/Yosys compatibility is a required verification
-target, not yet a measured portability pass. Vendor-specific memories, buses,
-debug and clocks remain outside this directory.
+The current accelerator epoch hierarchy contains exactly five modules:
 
-P09 adds `nca_local_rule.sv`, a parameterized folded three-layer **delta-only**
-engine. Read `docs/architecture/P09_G5_COMPUTE_PACKET.md` and
-`tb/p09_local_rule/`; its lane alternatives are not a final G5 choice. P08/P09
-HDL simulation and synthesis remain pending; Python/image checks are not RTL
-signoff. There is still no grid/epoch/mask/RNG/board controller here.
+| File | Role |
+|---|---|
+| `nca_epoch_core.sv` | Top-level pipeline, memory arbitration, old-row release, source postwrites and complete epoch commit |
+| `nca_banked_state.sv` | Four-bank persistent grid |
+| `nca_row_window.sv` | Three shared old-row buffers and zero-padded neighborhood selectors |
+| `nca_row_stage.sv` | Convolution, Dense 1 and Dense 2 arithmetic instances, coefficient sharing and ready/valid ownership |
+| `nca_round_sat.sv` | ReLU, nearest-even rounding and signed saturation |
+
+`files.f` is the production source list, with paths relative to the repository
+root. Accepted fidelity32 remains the default. Architecture and interface details
+are in `docs/architecture/ROW_PIPELINE_EPOCH_CORE.md`; verification is under
+`tb/row_pipeline/` and `tb/row_stage/`.
+
+The earlier folded local-rule engine and five standalone primitives moved to
+`tb/legacy_rtl/`. They are test fixtures for historical P08/P09 regressions and
+are not production synthesis inputs. Their original bytes are preserved.
+
+The 2026-10-30 readability cleanup removes comments from production RTL and
+replaces abbreviated internal names with descriptive names. Public module,
+parameter and port names remain stable. See
+`docs/verification/RTL_CLEANUP_RENAME_MAP.json` for the mapping and
+`docs/verification/RTL_CLEANUP_2026_10_30.md` for actual checks.
+
+The implementation is still an epoch engine. G5 physical acceptance, the full
+action controller, autonomous RNG, transport, FPGA wrappers and board evidence
+remain outstanding. No fit/Fmax/power result follows from simulation.

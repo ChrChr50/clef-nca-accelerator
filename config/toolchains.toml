@@ -17,7 +17,9 @@ status = "provisional-not-installed"
 
 [verification]
 primary_lane = "open-source"
-status = "tools-not-installed"
+status = "local-iverilog-simulation-available; synthesis-unrun"
+local_simulator_bin = "artifacts/toolchain/iverilog/bin"
+local_simulator_version = "Icarus 12.0 devel s20150603-1539-g2693dd32b"
 
 [asic_exploration]
 synthesis = "Yosys"

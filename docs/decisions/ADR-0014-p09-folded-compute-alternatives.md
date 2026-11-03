@@ -1,5 +1,7 @@
 # ADR-0014: P09 folded compute alternatives
 
+Verification update 2026-10-28: synthetic and checkpoint-derived local HDL execution now passes for all four lane variants. Synthesis remains unrun. ADR-0015 accepts the row-pipeline implementation direction; final G5 signoff remains pending, and ADR-0016 records an earlier numerical G4 return. Older missing-tool language below describes the original proposal date.
+
 - Status: **Proposed — G5 compute portion; not accepted**
 - Proposed: 2026-10-08
 - Stage/gate: P09; final G5 packet belongs to P10

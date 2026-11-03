@@ -1,0 +1,156 @@
+{
+  "all_replayed_float_actions_match_saved_history": true,
+  "cases": [
+    {
+      "action_index": 1139,
+      "swaps": [
+        {
+          "action": 0,
+          "case": "float_history_float_observation",
+          "scores": [
+            0.22915036976337433,
+            0.2098093181848526
+          ]
+        },
+        {
+          "action": 0,
+          "case": "float_history_candidate_observation",
+          "scores": [
+            0.10877780616283417,
+            -0.007109527476131916
+          ]
+        },
+        {
+          "action": 0,
+          "case": "candidate_history_float_observation",
+          "scores": [
+            0.22150248289108276,
+            0.21745514869689941
+          ]
+        },
+        {
+          "action": 0,
+          "case": "candidate_history_candidate_observation",
+          "scores": [
+            0.0976100042462349,
+            -0.021346013993024826
+          ]
+        }
+      ]
+    },
+    {
+      "action_index": 1143,
+      "swaps": [
+        {
+          "action": 0,
+          "case": "float_history_float_observation",
+          "scores": [
+            0.22495171427726746,
+            0.2211289256811142
+          ]
+        },
+        {
+          "action": 1,
+          "case": "float_history_candidate_observation",
+          "scores": [
+            0.2134534865617752,
+            0.2257496863603592
+          ]
+        },
+        {
+          "action": 0,
+          "case": "candidate_history_float_observation",
+          "scores": [
+            0.23372413218021393,
+            0.19926947355270386
+          ]
+        },
+        {
+          "action": 0,
+          "case": "candidate_history_candidate_observation",
+          "scores": [
+            0.23012101650238037,
+            0.22405676543712616
+          ]
+        }
+      ]
+    },
+    {
+      "action_index": 1145,
+      "swaps": [
+        {
+          "action": 1,
+          "case": "float_history_float_observation",
+          "scores": [
+            0.2537294924259186,
+            0.28220194578170776
+          ]
+        },
+        {
+          "action": 1,
+          "case": "float_history_candidate_observation",
+          "scores": [
+            0.073221854865551,
+            0.07482602447271347
+          ]
+        },
+        {
+          "action": 1,
+          "case": "candidate_history_float_observation",
+          "scores": [
+            0.24126285314559937,
+            0.2678627669811249
+          ]
+        },
+        {
+          "action": 0,
+          "case": "candidate_history_candidate_observation",
+          "scores": [
+            0.07399819791316986,
+            0.05981855466961861
+          ]
+        }
+      ]
+    },
+    {
+      "action_index": 1150,
+      "swaps": [
+        {
+          "action": 0,
+          "case": "float_history_float_observation",
+          "scores": [
+            0.2294594943523407,
+            0.20370516180992126
+          ]
+        },
+        {
+          "action": 0,
+          "case": "float_history_candidate_observation",
+          "scores": [
+            -1.2859947681427002,
+            -1.4249420166015625
+          ]
+        },
+        {
+          "action": 0,
+          "case": "candidate_history_float_observation",
+          "scores": [
+            0.26303115487098694,
+            0.14595508575439453
+          ]
+        },
+        {
+          "action": 0,
+          "case": "candidate_history_candidate_observation",
+          "scores": [
+            -1.256235957145691,
+            -1.4341940879821777
+          ]
+        }
+      ]
+    }
+  ],
+  "checkpoint_sha256": "f5cb898f9e1e739b8065111f7aedf280643b0b579f7e064f349f8adba1e68ace",
+  "scope": "seed41 four one-decision grid/observation swaps; not policy qualification or recovery rollout",
+  "script_sha256": "c4d3916ea58c6e63d1230e358ff9a9dbac70b1588fbecd95bc37379e67a8c9d0"
+}

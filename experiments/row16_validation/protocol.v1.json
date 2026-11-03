@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "stage": "P07 extension: imported row-pipeline arithmetic candidate; not accepted G4 arithmetic",
+  "authority": "docs/decisions/ADR-0015-row-pipeline-implementation-direction.md",
+  "freeze": "sw/cartpole/deployment.freeze.v1.json",
+  "accepted_comparator": "sw/cartpole/arithmetic.accepted.v1.json",
+  "candidate": {"name": "row16", "state_bits": 16, "state_fraction": 10, "weight_bits": 16, "weight_fraction": 12, "accumulator_bits": 48},
+  "operation_order": "Unchanged FixedNCA bias-last exact MAC, ReLU before ties-even requantization; source postwrites; lowest-index ties",
+  "screen": [
+    {"role": "reused calibration", "seed": 10, "max_actions": 128},
+    {"role": "reused calibration", "seed": 12, "max_actions": 128},
+    {"role": "new validation; no candidate tuning on these results", "seed": 40, "max_actions": 256},
+    {"role": "new validation; no candidate tuning on these results", "seed": 41, "max_actions": 256}
+  ],
+  "long_comparison": {"seeds": [10, 12, 40, 41], "max_actions": 10001, "run_condition": "Only if the screen has no candidate early terminal while paired float remains alive; do not tune fractions after viewing results"},
+  "comparison": {
+    "plant_and_draw_rng": "NumPy RandomState episode seed; reset plant then draws_for_action",
+    "initial_grid": "source seeded_initial_grid(seed XOR 0x5A17), independently quantized per format",
+    "persistence": "Independent controller grid and plant per arm, persistent between moves",
+    "masks": "Identical ordered full masks and epoch counts per logical action for all live arms",
+    "arms": ["original float32", "accepted fidelity32", "row16"],
+    "primary_perturbations": false,
+    "source_plant_max_steps": 10000,
+    "exactness": "Integer operator must equal independent scalar checks; float/fixed trajectories may differ and are reported",
+    "screen_stop": "Complete every declared screen case. Any row16 early terminal while float remains alive returns to G4 with evidence; no automatic numerical replacement or full-horizon qualification claim",
+    "acceptance": "No new allowance for control loss inferred. New measured degradation or incomplete long evidence requires an explicit G4 quality decision. Action differences alone are not proof of poorer control."
+  },
+  "evidence": {"resume_interval_actions": 16, "checkpoint_policy": "Ignored/local full grids and RNG state; safe summaries tracked", "report": "Per-arm termination/censoring/score, actions, counters, margins, first differences and matched-observation drift; exact command/protocol/source hashes"}
+}

@@ -1,0 +1,296 @@
+{
+  "cases": [
+    {
+      "counters": {
+        "accumulator0": 0,
+        "accumulator1": 0,
+        "accumulator2": 0,
+        "bias0": 0,
+        "bias1": 0,
+        "bias2": 0,
+        "initial_grid": 0,
+        "layer0": 0,
+        "layer1": 0,
+        "layer2": 0,
+        "observation": 0,
+        "output_marker": 0,
+        "residual": 0,
+        "weight0": 0,
+        "weight1": 0,
+        "weight2": 0
+      },
+      "independent_scalar_cells": 8,
+      "max_abs_one_step_error_to_float": 0.003711104393005371,
+      "path": "artifacts/row16_validation/vectors/action_1_epoch_1.npz",
+      "saved_epochs": [
+        1,
+        2,
+        59
+      ],
+      "sha256": "c8d81be1360d8770c24a8e561579cb1fe6f93a8ce138886931faab10a9b8da25",
+      "source_sha256": "c1c0428b6234bfc63dd49e3041042c27b1e164a551f998126003821c19405bc5",
+      "source_snapshot": "artifacts/p07_cartpole/float_profile/action_1_epoch_1.npz"
+    },
+    {
+      "counters": {
+        "accumulator0": 0,
+        "accumulator1": 0,
+        "accumulator2": 0,
+        "bias0": 0,
+        "bias1": 0,
+        "bias2": 0,
+        "initial_grid": 0,
+        "layer0": 0,
+        "layer1": 0,
+        "layer2": 0,
+        "observation": 0,
+        "output_marker": 0,
+        "residual": 0,
+        "weight0": 0,
+        "weight1": 0,
+        "weight2": 0
+      },
+      "independent_scalar_cells": 8,
+      "max_abs_one_step_error_to_float": 0.002785325050354004,
+      "path": "artifacts/row16_validation/vectors/action_10_epoch_1.npz",
+      "saved_epochs": [
+        1,
+        2,
+        59
+      ],
+      "sha256": "920ead0c0421e49f2465792c56cb00c9aae48f84c78533119c20f19ddab5b4fb",
+      "source_sha256": "a0e45cf7f60a688411cafccc49bbc99ff92955b4012878356548e527714f9127",
+      "source_snapshot": "artifacts/p07_cartpole/float_profile/action_10_epoch_1.npz"
+    },
+    {
+      "counters": {
+        "accumulator0": 0,
+        "accumulator1": 0,
+        "accumulator2": 0,
+        "bias0": 0,
+        "bias1": 0,
+        "bias2": 0,
+        "initial_grid": 0,
+        "layer0": 0,
+        "layer1": 0,
+        "layer2": 0,
+        "observation": 0,
+        "output_marker": 0,
+        "residual": 0,
+        "weight0": 0,
+        "weight1": 0,
+        "weight2": 0
+      },
+      "independent_scalar_cells": 8,
+      "max_abs_one_step_error_to_float": 0.0028794705867767334,
+      "path": "artifacts/row16_validation/vectors/action_100_epoch_1.npz",
+      "saved_epochs": [
+        1,
+        2,
+        59
+      ],
+      "sha256": "edd6ec2b10355278158bfb3210296eef9f463b71c15c86777de970c7374b0e40",
+      "source_sha256": "a07e6186e7fc8268102245d178cfcc284034f4896c8ab874f74539c55f4419ae",
+      "source_snapshot": "artifacts/p07_cartpole/float_profile/action_100_epoch_1.npz"
+    },
+    {
+      "counters": {
+        "accumulator0": 0,
+        "accumulator1": 0,
+        "accumulator2": 0,
+        "bias0": 0,
+        "bias1": 0,
+        "bias2": 0,
+        "initial_grid": 0,
+        "layer0": 0,
+        "layer1": 0,
+        "layer2": 0,
+        "observation": 0,
+        "output_marker": 0,
+        "residual": 0,
+        "weight0": 0,
+        "weight1": 0,
+        "weight2": 0
+      },
+      "independent_scalar_cells": 8,
+      "max_abs_one_step_error_to_float": 0.0024383366107940674,
+      "path": "artifacts/row16_validation/vectors/action_1000_epoch_1.npz",
+      "saved_epochs": [
+        1,
+        2,
+        59
+      ],
+      "sha256": "50159f6a8235599f49f1f1e61c8ad60f73597c412700acad39a7f83363026ba0",
+      "source_sha256": "29c48c355d7c23097ac68a3b60e6317aca4c698baf2f10e919f5b6b5a6414a61",
+      "source_snapshot": "artifacts/p07_cartpole/float_profile/action_1000_epoch_1.npz"
+    },
+    {
+      "counters": {
+        "accumulator0": 0,
+        "accumulator1": 0,
+        "accumulator2": 0,
+        "bias0": 0,
+        "bias1": 0,
+        "bias2": 0,
+        "initial_grid": 0,
+        "layer0": 0,
+        "layer1": 0,
+        "layer2": 0,
+        "observation": 0,
+        "output_marker": 0,
+        "residual": 0,
+        "weight0": 0,
+        "weight1": 0,
+        "weight2": 0
+      },
+      "independent_scalar_cells": 8,
+      "max_abs_one_step_error_to_float": 0.00309889018535614,
+      "path": "artifacts/row16_validation/vectors/action_5000_epoch_1.npz",
+      "saved_epochs": [
+        1,
+        2,
+        59
+      ],
+      "sha256": "8bb78c307d5b6f0d480cae458972bfd577cc7d997d3035059e668af0904cbc13",
+      "source_sha256": "e19225f434acd9ec683c0ff3f51ac704c6ffe27ee4faa155556277970bb7fdec",
+      "source_snapshot": "artifacts/p07_cartpole/float_profile/action_5000_epoch_1.npz"
+    },
+    {
+      "counters": {
+        "accumulator0": 0,
+        "accumulator1": 0,
+        "accumulator2": 0,
+        "bias0": 0,
+        "bias1": 0,
+        "bias2": 0,
+        "initial_grid": 0,
+        "layer0": 0,
+        "layer1": 0,
+        "layer2": 0,
+        "observation": 0,
+        "output_marker": 0,
+        "residual": 0,
+        "weight0": 0,
+        "weight1": 0,
+        "weight2": 0
+      },
+      "independent_scalar_cells": 8,
+      "max_abs_one_step_error_to_float": 0.0025860071182250977,
+      "path": "artifacts/row16_validation/vectors/action_10000_epoch_1.npz",
+      "saved_epochs": [
+        1,
+        2,
+        59
+      ],
+      "sha256": "8506671b958460705a54a84009c9f5032ab3cf9c16d878bd44e4565d135bfdeb",
+      "source_sha256": "7064db5f38c290e55aea43bb6337d6f53d96544d808f20264f72859f5a3dd545",
+      "source_snapshot": "artifacts/p07_cartpole/float_profile/action_10000_epoch_1.npz"
+    }
+  ],
+  "format": {
+    "accumulation_order": "kernel row, column, channel; bias last",
+    "accumulator_bits": 48,
+    "activation_format": "state format",
+    "bias_fraction": 22,
+    "fan_ins": [
+      54,
+      20,
+      30
+    ],
+    "name": "row16",
+    "overflow": "signed saturation",
+    "post_write_order": "residual; clears; markers; scaled observation scatter",
+    "quantization_boundary": "unscaled E01 float32 observations; source float32 scaling once",
+    "relu": "after bias, before requantization",
+    "residual": "guard-bit sum then state saturation",
+    "rounding": "nearest-ties-even",
+    "schedule": "old-grid reads, full new-grid commit each supplied logical epoch",
+    "state_bits": 16,
+    "state_fraction": 10,
+    "tie": "lowest action index",
+    "weight_bits": 16,
+    "weight_fraction": 12
+  },
+  "image_manifest": {
+    "files": [
+      {
+        "bits": 16,
+        "kind": "kernel",
+        "layer": 0,
+        "path": "artifacts/row16_validation/images/layer0_kernel.hex",
+        "sha256": "8b8b2d030a460e3e5881c2384b81bbdc938d5da64e502d7b47e435869a1cbe8c",
+        "words": 1080
+      },
+      {
+        "bits": 48,
+        "kind": "bias",
+        "layer": 0,
+        "path": "artifacts/row16_validation/images/layer0_bias.hex",
+        "sha256": "1028eef1d8817546a6b5c4c2346b4cfbd331bdedaa6db7f9e4b30f1d678a9140",
+        "words": 20
+      },
+      {
+        "bits": 16,
+        "kind": "kernel",
+        "layer": 1,
+        "path": "artifacts/row16_validation/images/layer1_kernel.hex",
+        "sha256": "ebcef668b5602e3e6979b9f3367cfc539ae41a925a8eb5e7dc5f12df5c568ff1",
+        "words": 600
+      },
+      {
+        "bits": 48,
+        "kind": "bias",
+        "layer": 1,
+        "path": "artifacts/row16_validation/images/layer1_bias.hex",
+        "sha256": "5a5080065b75f43e81e93907746ddd654194346a6c1c42b21d2dfa1e63e3845a",
+        "words": 30
+      },
+      {
+        "bits": 16,
+        "kind": "kernel",
+        "layer": 2,
+        "path": "artifacts/row16_validation/images/layer2_kernel.hex",
+        "sha256": "19edcc5dca987188c568f6d8bab6cbd3ea04c1889c12d53a2a100e5f4b28abf7",
+        "words": 180
+      },
+      {
+        "bits": 48,
+        "kind": "bias",
+        "layer": 2,
+        "path": "artifacts/row16_validation/images/layer2_bias.hex",
+        "sha256": "5658187695388c155364bbab72e6bb76f3a3396bfc65a7256ebfc8b66a539ff7",
+        "words": 6
+      }
+    ],
+    "format": {
+      "accumulation_order": "kernel row, column, channel; bias last",
+      "accumulator_bits": 48,
+      "activation_format": "state format",
+      "bias_fraction": 22,
+      "fan_ins": [
+        54,
+        20,
+        30
+      ],
+      "name": "row16",
+      "overflow": "signed saturation",
+      "post_write_order": "residual; clears; markers; scaled observation scatter",
+      "quantization_boundary": "unscaled E01 float32 observations; source float32 scaling once",
+      "relu": "after bias, before requantization",
+      "residual": "guard-bit sum then state saturation",
+      "rounding": "nearest-ties-even",
+      "schedule": "old-grid reads, full new-grid commit each supplied logical epoch",
+      "state_bits": 16,
+      "state_fraction": 10,
+      "tie": "lowest action index",
+      "weight_bits": 16,
+      "weight_fraction": 12
+    },
+    "layout": "output major, input minor; layer0 input=(dr,dc,ch)",
+    "status": "candidate-not-accepted"
+  },
+  "profile_sha256": "c9113f3ec63237d7aec7bbdfc5c1cdc802f91e0a850d465d85e225f53df93cde",
+  "protocol_sha256": "aa6d5b40dd552087513ab62a57630fb8e232883056d129797f0ce7746908e8fd",
+  "script_sha256": "234a049c9e2e4a773328cbee61810ef49714182277832245a57771523d084f64",
+  "status": "candidate-not-accepted"
+}

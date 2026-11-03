@@ -1,5 +1,7 @@
 # ADR-0013: P08 portable primitive seams
 
+Verification update 2026-10-28: synthetic and checkpoint-derived local HDL execution now passes. Historical missing-tool wording below remains dated. ADR-0015 supplies the new row-pipeline direction; its row16 candidate remains unaccepted after a G4 return. No numerical manifest, final architecture or board signoff is changed by this verification update.
+
 - Status: **Proposed — implementation record pending HDL verification**
 - Proposed: 2026-10-07
 - Stage: P08; no new human gate; G5 remains unselected

@@ -31,6 +31,8 @@ jobs:
         run: python -m unittest model_export.cartpole.test_export_local -v
       - name: Run candidate bit-accurate arithmetic and scheduling tests
         run: python -m unittest model_export.cartpole.test_fixed_point model_export.cartpole.test_accepted_arithmetic -v
+      - name: Run row16 candidate and exact-backend regressions (synthetic only)
+        run: python -m unittest model_export.cartpole.test_row16_candidate model_export.cartpole.test_exact_blas experiments.row16_validation.test_resume -v
       - name: Run historical Hanoi environment and oracle regressions
         run: python -m unittest discover -s reference/hanoi/tests -v
       - name: Run P08 accepted-width synthetic vector tests
@@ -43,5 +45,28 @@ jobs:
         run: python -m unittest tb.p09_local_rule.test_support -v
       - name: Simulate P09 local-rule lane alternatives (synthetic only)
         run: python tb/p09_local_rule/run.py
+      - name: Simulate row-stage arithmetic alternatives (synthetic only)
+        run: python tb/row_stage/run.py
+      - name: Simulate banked single-grid storage and collision retry
+        run: python tb/row_stage/memory.py
       - name: Run historical P05 adapter, layout, and dataset regressions
         run: python -m unittest discover -s training/hanoi_nca/tests -v
+
+  row-pipeline-replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Install locked Python dependencies
+        run: python -m pip install --require-hashes --requirement requirements/ci.lock
+      - name: Install open RTL simulator
+        run: sudo apt-get update && sudo apt-get install -y iverilog
+      - name: Check every shared-window address and padding selection
+        run: python tb/row_pipeline/window.py
+      - name: Replay persistent synthetic full-grid epochs at both widths
+        run: python tb/row_pipeline/run.py --jobs 2

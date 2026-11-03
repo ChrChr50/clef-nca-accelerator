@@ -1,5 +1,7 @@
 # P08 portable primitives — 2026-10-07
 
+Verification addendum 2026-10-28: local `tb/p08_primitives/run.py` and `--restricted` now both **PASS** with the installed Icarus simulator. The older missing-tool statements below describe the original execution date. Detailed new commands, tool identity, logs and limitations are in `docs/architecture/ROW_PIPELINE_G4_RETURN_PACKET.md`. Synthesis remains unrun; this is not board or full-controller verification.
+
 Status: **Implemented; HDL verification pending, not fully complete**.
 No P09 execution or G5 decision. The recorded missing-tool
 fallback preserves real RTL/tests and records unrun checks rather than claiming

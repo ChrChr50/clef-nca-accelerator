@@ -1,0 +1,80 @@
+{
+  "excluded_storage": "Delta holds, pipeline sums, replication/port padding, mask/RNG/UART, metadata/debug and wrappers",
+  "formats": {
+    "fidelity32": {
+      "accumulator_bits": 62,
+      "bytes": {
+        "biases": 434,
+        "kernels": 5580,
+        "one_grid": 24576,
+        "three_old_rows": 2304,
+        "two_slots_at_each_activation_boundary": 12800
+      },
+      "state_bits": 32,
+      "state_fraction": 24,
+      "state_m10k_width_packing_estimate": 20,
+      "state_quantum": 5.960464477539063e-08,
+      "sum_of_listed_bytes": 45694,
+      "weight_bits": 24,
+      "weight_fraction": 22,
+      "weight_quantum": 2.384185791015625e-07
+    },
+    "row16": {
+      "accumulator_bits": 48,
+      "bytes": {
+        "biases": 336,
+        "kernels": 3720,
+        "one_grid": 12288,
+        "three_old_rows": 1152,
+        "two_slots_at_each_activation_boundary": 6400
+      },
+      "state_bits": 16,
+      "state_fraction": 10,
+      "state_m10k_width_packing_estimate": 12,
+      "state_quantum": 0.0009765625,
+      "sum_of_listed_bytes": 23896,
+      "weight_bits": 16,
+      "weight_fraction": 12,
+      "weight_quantum": 0.000244140625
+    }
+  },
+  "schedule_examples": [
+    {
+      "55_epoch_action_ms_at_50MHz": 39.688,
+      "assumptions": "One MAC/lane/cycle, same clock, enough ports/registers, no refill/writeback/transport overhead",
+      "enabled_stage_cycles": [
+        1080,
+        800,
+        720
+      ],
+      "ideal_epoch_cycles": 36080,
+      "lanes": [
+        32,
+        24,
+        8
+      ]
+    },
+    {
+      "55_epoch_action_ms_at_50MHz": 79.376,
+      "assumptions": "One MAC/lane/cycle, same clock, enough ports/registers, no refill/writeback/transport overhead",
+      "enabled_stage_cycles": [
+        2160,
+        1600,
+        1440
+      ],
+      "ideal_epoch_cycles": 72160,
+      "lanes": [
+        16,
+        12,
+        4
+      ]
+    }
+  ],
+  "scope": "Logical counts/conditional timing only; no Quartus mapping, Fmax or power measurements",
+  "sources": {
+    "accumulator_restrictions": "https://docs.altera.com/r/docs/683375/current/cyclone-v-device-handbook-volume-1-device-interfaces-and-integration/accumulator-and-chainout-adder",
+    "device_resources": "https://docs.altera.com/r/docs/683375/current/cyclone-v-device-handbook-volume-1-device-interfaces-and-integration/resources",
+    "dsp_multipliers": "https://docs.altera.com/r/docs/683375/current/cyclone-v-device-handbook-volume-1-device-interfaces-and-integration/multipliers",
+    "m10k_modes": "https://docs.altera.com/r/docs/683375/current/cyclone-v-device-handbook-volume-1-device-interfaces-and-integration/m10k-blocks-mixed-width-configurations"
+  }
+}

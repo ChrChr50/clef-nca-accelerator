@@ -1,5 +1,7 @@
 # P09 folded local rule — 2026-10-08
 
+Verification addendum 2026-10-28: local synthetic and restricted `tb/p09_local_rule/run.py` now **PASS for lanes 1/2/3/4**, including all six accepted fidelity32 cases and 48 scalar cells / 2688 layer pairs per lane. Existing HDL source and accepted golden were unchanged. The older missing-tool statements below are historical. New parameterized row-stage comparison HDL also passes; final architecture/controller and synthesis remain pending, with the continuation stopped at the row16 G4 return. See `ROW_PIPELINE_G4_RETURN_PACKET.md`.
+
 Status: **Implemented; HDL/synthesis verification pending, not fully complete**.
 P08 remains pending; no earlier stage was relabeled complete. Stop before P10.
 Proposed ADR-0014 and `P09_G5_COMPUTE_PACKET.md` supply the compute portion of
